@@ -6,9 +6,9 @@
 #include <QTimer>
 #include <QElapsedTimer>
 #include <vector>
-
-#include "XYZ_h.h"
+#include "XYZ_H.h"
 #include "vertex.h"
+#include "visualobject.h"
 
 class QOpenGLContext;
 class Shader;
@@ -35,12 +35,17 @@ private slots:
     void render();          //the actual render - function
 
 private:
+
+    //Vertex m_v;
+    std::vector<VisualObject*> mObjects;
     void init();            //initialize things we need before rendering
 
 
-    std::vector<Vertex0> mVertices;
 
+    std::vector<Vertex> mVertices;
     XYZ xyz{};
+
+
 
 QOpenGLContext *mContext{nullptr};  //Our OpenGL context
     bool mInitialized{false};

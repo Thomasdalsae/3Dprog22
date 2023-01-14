@@ -10,7 +10,9 @@ SOURCES += main.cpp \
     logger.cpp \
     mainwindow.cpp \
     renderwindow.cpp \
-    shader.cpp
+    shader.cpp \
+    vertex.cpp \
+    visualobject.cpp
 
 HEADERS += \
     XYZ_H.h \
@@ -18,7 +20,8 @@ HEADERS += \
     mainwindow.h \
     renderwindow.h \
     shader.h \
-    vertex.h
+    vertex.h \
+    visualobject.h
 
 FORMS += \
     mainwindow.ui

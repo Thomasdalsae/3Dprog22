@@ -1,17 +1,20 @@
+
 #ifndef XYZ_H
 #define XYZ_H
+
 #include <QOpenGLFunctions_4_1_Core>
+#include <QMatrix4x4>
 #include <vector>
-#include "vertex.h"
-class XYZ : protected QOpenGLFunctions_4_1_Core
+#include "visualobject.h"
+
+class XYZ : public VisualObject
 {
 private:
-std::vector<Vertex0> mVertices;
-//QOpenGLContext *mContext;
+
 public:
-XYZ();
-//void setContext(QOpenGLContext *context);
-void init(GLuint mVAO, GLuint mVBO);
-void draw();
+   XYZ();
+   ~XYZ() override;
+   void init(GLint matrixUniform) override;
+   void draw() override;
 };
 #endif // XYZ_H

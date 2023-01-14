@@ -7,7 +7,7 @@ uniform mat4 matrix;                        //the matrix for the model
 
 void main() {
    color = colorIn;                         //passing on the vertex color
-    color = vec4(0,0,1,0);
+    //color = vec4(0,0,0,0);
    gl_Position = matrix * positionIn;       //calculate the position of the model
 
 }
