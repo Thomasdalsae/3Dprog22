@@ -9,6 +9,7 @@
 #include "XYZ_H.h"
 #include "vertex.h"
 #include "visualobject.h"
+#include "trianglesurface.h"
 
 class QOpenGLContext;
 class Shader;
@@ -44,6 +45,8 @@ private:
 
     std::vector<Vertex> mVertices;
     XYZ xyz{};
+
+    TriangleSurface trianglesurface{};
 
 
 

@@ -44,6 +44,7 @@ RenderWindow::RenderWindow(const QSurfaceFormat &format, MainWindow *mainWindow)
     mRenderTimer = new QTimer(this);
 
     mObjects.push_back(new XYZ());
+    mObjects.push_back(new TriangleSurface());
 }
 
 RenderWindow::~RenderWindow()
@@ -116,7 +117,6 @@ void RenderWindow::init()
     // This has to match the "matrix" variable name in the vertex shader
     // The uniform is used in the render() function to send the model matrix to the shader
     mMatrixUniform = glGetUniformLocation( mShaderProgram->getProgram(), "matrix" );
-
     for (auto it=mObjects.begin();it!= mObjects.end(); it++)
         (*it)->init(mMatrixUniform);
 
@@ -145,9 +145,10 @@ void RenderWindow::render()
 
 //the actual draw call
     //xyz.draw();
-
+        glUseProgram(mShaderProgram->getProgram());
     for (auto it=mObjects.begin();it!= mObjects.end(); it++)
         (*it)->draw();
+
    //glDrawArrays(GL_TRIANGLES,      //draw mode
      //            0,                 //position of first vertex to draw (in the VBO inside the VAO!)
        //          mVertices.size());                //how many vertices should be drawn - 3 for the triangle
