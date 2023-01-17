@@ -145,10 +145,16 @@ void RenderWindow::render()
 
 //the actual draw call
     //xyz.draw();
+
+
+    trianglesurface.readFile("Triangle.txt");
+
         glUseProgram(mShaderProgram->getProgram());
     for (auto it=mObjects.begin();it!= mObjects.end(); it++)
         (*it)->draw();
 
+
+    //trianglesurface.readFile("Triangle.txt");
    //glDrawArrays(GL_TRIANGLES,      //draw mode
      //            0,                 //position of first vertex to draw (in the VBO inside the VAO!)
        //          mVertices.size());                //how many vertices should be drawn - 3 for the triangle

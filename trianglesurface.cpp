@@ -3,13 +3,14 @@
 TriangleSurface::TriangleSurface() : VisualObject()
 {
   //                x    y     z   r g b
+  ///*
   Vertex v0{0.0,0.0,0.0, 1,0,0};    mVertices.push_back(v0);
   Vertex v1(0.5,0.0,0.0, 0,1,0);    mVertices.push_back(v1);
   Vertex v2{0.5,0.5,0.0, 0,0,1};    mVertices.push_back(v2);
   Vertex v3{0.0,0.0,0.0, 0,0,1};    mVertices.push_back(v3);
   Vertex v4{0.5,0.5,0.0, 0,1,0};    mVertices.push_back(v4);
   Vertex v5{0.0,0.5,0.0, 1,0,0};    mVertices.push_back(v5);
-
+  //*/
   mMatrix.setToIdentity();
 
 
@@ -59,6 +60,10 @@ void TriangleSurface::readFile(std::string filnavn) {
    std::ifstream inn;
    inn.open(filnavn.c_str());
 
+        if (!inn.is_open()){
+         qDebug() << "error" ;
+        }
+
    if (inn.is_open()) {
        int n;
        Vertex vertex;
@@ -69,13 +74,14 @@ void TriangleSurface::readFile(std::string filnavn) {
             mVertices.push_back(vertex);
        }
        inn.close();
+
    }
 }
 
 void TriangleSurface::draw(){
    glBindVertexArray( mVAO );
    glUniformMatrix4fv( mMatrixUniform, 1, GL_FALSE, mMatrix.constData());
-   glDrawArrays(GL_LINES, 0, mVertices.size());
+   glDrawArrays(GL_TRIANGLES, 0, mVertices.size());
 }
 
 

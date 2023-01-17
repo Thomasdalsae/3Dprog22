@@ -29,5 +29,6 @@ FORMS += \
     mainwindow.ui
 
 DISTFILES += \
+    Triangle.txt \
     plainshader.frag \
     plainshader.vert
