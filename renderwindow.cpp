@@ -151,7 +151,7 @@ void RenderWindow::render()
     //xyz.draw();
 
 
-    trianglesurface.readFile("Triangle.txt");
+    trianglesurface.readFile(":/Users/thoma/Desktop/3Dprog22-main/3Dprog22/Triangle.txt");
 
         glUseProgram(mShaderProgram->getProgram());
     for (auto it=mObjects.begin();it!= mObjects.end(); it++)
