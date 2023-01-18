@@ -8,7 +8,8 @@
 #include <QStatusBar>
 #include <QDebug>
 #include <string>
-
+#include <fstream>
+#include <iostream>
 
 #include "shader.h"
 #include "mainwindow.h"
@@ -45,6 +46,7 @@ RenderWindow::RenderWindow(const QSurfaceFormat &format, MainWindow *mainWindow)
 
     mObjects.push_back(new XYZ());
     mObjects.push_back(new TriangleSurface());
+
 }
 
 RenderWindow::~RenderWindow()
@@ -119,6 +121,8 @@ void RenderWindow::init()
     mMatrixUniform = glGetUniformLocation( mShaderProgram->getProgram(), "matrix" );
     for (auto it=mObjects.begin();it!= mObjects.end(); it++)
         (*it)->init(mMatrixUniform);
+
+
 
     glBindVertexArray(0);       //unbinds any VertexArray - good practice
 
