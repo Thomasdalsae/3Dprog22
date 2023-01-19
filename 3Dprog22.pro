@@ -30,5 +30,6 @@ FORMS += \
 
 DISTFILES += \
     Triangle.txt \
+    TriangleTest \
     plainshader.frag \
     plainshader.vert

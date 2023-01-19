@@ -115,9 +115,15 @@ void RenderWindow::init()
     // (out of the build-folder) and then up into the project folder.
     mShaderProgram = new Shader("../3Dprog22/plainshader.vert", "../3Dprog22/plainshader.frag");
 
+
     // Get the matrixUniform location from the shader
     // This has to match the "matrix" variable name in the vertex shader
     // The uniform is used in the render() function to send the model matrix to the shader
+    // trianglesurface.readFile("C:/Users/thoma/Desktop/3Dprog22-main/3Dprog22/Triangle.txt");
+    trianglesurface.toFile("C:/Users/thoma/Desktop/3Dprog22-main/3Dprog22/Trianglee.txt");
+    trianglesurface.readFile("C:/Users/thoma/Desktop/3Dprog22-main/3Dprog22/Trianglee.txt");
+
+
     mMatrixUniform = glGetUniformLocation( mShaderProgram->getProgram(), "matrix" );
     for (auto it=mObjects.begin();it!= mObjects.end(); it++)
         (*it)->init(mMatrixUniform);
@@ -151,7 +157,6 @@ void RenderWindow::render()
     //xyz.draw();
 
 
-    trianglesurface.readFile(":/Users/thoma/Desktop/3Dprog22-main/3Dprog22/Triangle.txt");
 
         glUseProgram(mShaderProgram->getProgram());
     for (auto it=mObjects.begin();it!= mObjects.end(); it++)

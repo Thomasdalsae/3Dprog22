@@ -17,6 +17,7 @@ public:
    TriangleSurface(std::string filnavn);
    ~TriangleSurface() override;
    void readFile(std::string filnavn);
+   void toFile(std::string filnavn);
    void init(GLint shader) override;
    void draw() override;
    void construct();

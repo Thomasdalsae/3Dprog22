@@ -3,14 +3,15 @@
 TriangleSurface::TriangleSurface() : VisualObject()
 {
   //                x    y     z   r g b
-  /*
+
   Vertex v0{0.0,0.0,0.0, 1,0,0};    mVertices.push_back(v0);
   Vertex v1(0.5,0.0,0.0, 0,1,0);    mVertices.push_back(v1);
   Vertex v2{0.5,0.5,0.0, 0,0,1};    mVertices.push_back(v2);
   Vertex v3{0.0,0.0,0.0, 0,0,1};    mVertices.push_back(v3);
   Vertex v4{0.5,0.5,0.0, 0,1,0};    mVertices.push_back(v4);
   Vertex v5{0.0,0.5,0.0, 1,0,0};    mVertices.push_back(v5);
-  */
+
+
   mMatrix.setToIdentity();
 
 
@@ -56,27 +57,54 @@ TriangleSurface::TriangleSurface(std::string filnavn) : VisualObject()
 
 
 
-void TriangleSurface::readFile(std::string filnavn) {
-   std::ifstream inn;
-   inn.open(filnavn.c_str());
+//void TriangleSurface::readFile(std::string filnavn) {
+//   std::ifstream inn;
+//   inn.open(filnavn.c_str());
 
-        if (!inn.is_open()){
-         qDebug() << "error" ;
+//        if (!inn.is_open()){
+//         qDebug() << "error" ;
+//        }
+
+//   if (inn.is_open()) {
+//       qDebug() << "FileOpen!";
+//       int n;
+//       Vertex vertex;
+//       inn >> n;
+//       mVertices.reserve(n);
+//       for (int i=0; i<n; i++) {
+//            inn >> vertex;
+//            mVertices.push_back(vertex);
+//       }
+//       inn.close();
+
+//   }
+//}
+void TriangleSurface::readFile(std::string fileName) {
+        std::ifstream inn;
+        inn.open(fileName.c_str());
+        mVertices.clear();
+        if (inn.is_open()) {
+            int n;
+            Vertex vertex;
+            inn >> n;
+            mVertices.reserve(n);
+            for (int i = 0; i < n; ++i) {
+                inn >> vertex;
+                mVertices.push_back(vertex);
+                std::cout << vertex << std::endl;
+            }
         }
+    }
 
-   if (inn.is_open()) {
-       int n;
-       Vertex vertex;
-       inn >> n;
-       mVertices.reserve(n);
-       for (int i=0; i<n; i++) {
-            inn >> vertex;
-            mVertices.push_back(vertex);
-       }
-       inn.close();
-
-   }
-}
+    void TriangleSurface::toFile(std::string fileName) {
+        std::fstream o;
+        o.open(fileName.c_str(), std::ios::out);
+        o << mVertices.size() << std::endl;
+        for (int i = 0; i < mVertices.size(); ++i) {
+            o << mVertices[i] << std::endl;
+        }
+        o.close();
+    }
 
 void TriangleSurface::draw(){
    glBindVertexArray( mVAO );
