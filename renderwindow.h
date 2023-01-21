@@ -10,6 +10,7 @@
 #include "vertex.h"
 #include "visualobject.h"
 #include "trianglesurface.h"
+#include "curve.h"
 
 class QOpenGLContext;
 class Shader;
@@ -47,6 +48,8 @@ private:
     XYZ xyz{};
 
     TriangleSurface trianglesurface{};
+
+    Curve curve{};
 
 
 

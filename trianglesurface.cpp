@@ -15,6 +15,8 @@ TriangleSurface::TriangleSurface() : VisualObject()
   mMatrix.setToIdentity();
   //readFile("C:/Users/thoma/Desktop/3Dprog22-main/3Dprog22/Triangle.txt");
 
+    //Have write to file under construct function
+  // make changes on construct algo then run it to make new txt file.
     //construct();
 
   readFile("C:/Users/thoma/Desktop/3Dprog22-main/3Dprog22/Trianglee.txt");
@@ -60,25 +62,6 @@ TriangleSurface::TriangleSurface(std::string filnavn) : VisualObject()
 
 
 
-//void TriangleSurface::readFile(std::string filnavn) {
-//   std::ifstream inn;
-//   inn.open(filnavn.c_str());
-
-//        if (!inn.is_open()){
-//         qDebug() << "error" ;
-//        }
-
-//   if (inn.is_open()) {
-//       qDebug() << "FileOpen!";
-//       int n;
-//       Vertex vertex;
-//       inn >> n;
-//       mVertices.reserve(n);
-//       for (int i=0; i<n; i++) {
-//            inn >> vertex;
-//            mVertices.push_back(vertex);
-//       }
-//       inn.close();
 
 //   }
 //}
