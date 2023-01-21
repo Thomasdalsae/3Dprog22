@@ -3,18 +3,21 @@
 TriangleSurface::TriangleSurface() : VisualObject()
 {
   //                x    y     z   r g b
-
+ /*
   Vertex v0{0.0,0.0,0.0, 1,0,0};    mVertices.push_back(v0);
   Vertex v1(0.5,0.0,0.0, 0,1,0);    mVertices.push_back(v1);
   Vertex v2{0.5,0.5,0.0, 0,0,1};    mVertices.push_back(v2);
   Vertex v3{0.0,0.0,0.0, 0,0,1};    mVertices.push_back(v3);
   Vertex v4{0.5,0.5,0.0, 0,1,0};    mVertices.push_back(v4);
   Vertex v5{0.0,0.5,0.0, 1,0,0};    mVertices.push_back(v5);
-
+*/
 
   mMatrix.setToIdentity();
+  //readFile("C:/Users/thoma/Desktop/3Dprog22-main/3Dprog22/Triangle.txt");
 
+    //construct();
 
+  readFile("C:/Users/thoma/Desktop/3Dprog22-main/3Dprog22/Trianglee.txt");
 }
 
 TriangleSurface::~TriangleSurface(){}
@@ -115,20 +118,21 @@ void TriangleSurface::draw(){
 
 void TriangleSurface::construct()
 {
-  float xmin=0.0f, xmax=1.0f, ymin=0.0f, ymax=1.0f, h=0.25f;
+  float xmin=-1.0f, xmax=0.0f, ymin=-1.0f, ymax=0.0f, h=0.05f;
   for (auto x=xmin; x<xmax; x+=h)
       for (auto y=ymin; y<ymax; y+=h)
       {
-          float z = sin(M_PI*x)*sin(M_PI*y);
+          float z = cos(M_PI*x)*sin(M_PI*y);
           mVertices.push_back(Vertex{x,y,z,x,y,z});
-          z = sin(M_PI*(x+h))*sin(M_PI*y);
+          z = cos((M_PI*x+h))*sin(M_PI*y);
           mVertices.push_back(Vertex{x+h,y,z,x,y,z});
-          z = sin(M_PI*x)*sin(M_PI*(y+h));
+          z = cos(M_PI*x)*sin(M_PI*(y+h));
           mVertices.push_back(Vertex{x,y+h,z,x,y,z});
           mVertices.push_back(Vertex{x,y+h,z,x,y,z});
-          z = sin(M_PI*(x+h))*sin(M_PI*y);
+          z = cos(M_PI*(x+h))*sin(M_PI*y);
           mVertices.push_back(Vertex{x+h,y,z,x,y,z});
-          z = sin(M_PI*(x+h))*sin(M_PI*(y+h));
+          z = cos(M_PI*(x+h))*sin(M_PI*(y+h));
           mVertices.push_back(Vertex{x+h,y+h,z,x,y,z});
       }
-}
+
+ toFile("C:/Users/thoma/Desktop/3Dprog22-main/3Dprog22/Trianglee.txt");}

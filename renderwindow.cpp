@@ -47,10 +47,14 @@ RenderWindow::RenderWindow(const QSurfaceFormat &format, MainWindow *mainWindow)
     mObjects.push_back(new XYZ());
     mObjects.push_back(new TriangleSurface());
 
+    //mObjects.push_back(new TriangleSurface("C:/Users/thoma/Desktop/3Dprog22-main/3Dprog22/Triangle.txt"));
 }
 
 RenderWindow::~RenderWindow()
 {
+
+    mObjects.clear();
+
     //cleans up the GPU memory
     glDeleteVertexArrays( 1, &mVAO );
     glDeleteBuffers( 1, &mVBO );
@@ -120,8 +124,8 @@ void RenderWindow::init()
     // This has to match the "matrix" variable name in the vertex shader
     // The uniform is used in the render() function to send the model matrix to the shader
     // trianglesurface.readFile("C:/Users/thoma/Desktop/3Dprog22-main/3Dprog22/Triangle.txt");
-    trianglesurface.toFile("C:/Users/thoma/Desktop/3Dprog22-main/3Dprog22/Trianglee.txt");
-    trianglesurface.readFile("C:/Users/thoma/Desktop/3Dprog22-main/3Dprog22/Trianglee.txt");
+   // trianglesurface.toFile("C:/Users/thoma/Desktop/3Dprog22-main/3Dprog22/Trianglee.txt");
+   // trianglesurface.readFile("C:/Users/thoma/Desktop/3Dprog22-main/3Dprog22/Triangle.txt");
 
 
     mMatrixUniform = glGetUniformLocation( mShaderProgram->getProgram(), "matrix" );
