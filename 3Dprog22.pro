@@ -10,7 +10,6 @@ SOURCES += main.cpp \
     curve.cpp \
     logger.cpp \
     mainwindow.cpp \
-    points.cpp \
     renderwindow.cpp \
     shader.cpp \
     trianglesurface.cpp \
@@ -22,7 +21,6 @@ HEADERS += \
     curve.h \
     logger.h \
     mainwindow.h \
-    points.h \
     renderwindow.h \
     shader.h \
     trianglesurface.h \
@@ -33,6 +31,7 @@ FORMS += \
     mainwindow.ui
 
 DISTFILES += \
+    Curve.txt \
     Triangle.txt \
     TriangleTest \
     plainshader.frag \

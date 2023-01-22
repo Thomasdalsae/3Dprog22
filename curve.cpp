@@ -8,9 +8,9 @@ Curve::Curve() : VisualObject()
 
     //Have write to file under construct function
   // make changes on construct algo then run it to make new txt file.
-    construct();
+   //construct();
 
-  readFile("C:/Users/thoma/Desktop/3Dprog22-main/3Dprog22/Curve.txt");
+ //toFile("/GItRepos/3Dprog22/Curve.txt");
 }
 
 Curve::~Curve(){};
@@ -84,27 +84,36 @@ void Curve::readFile(std::string fileName) {
 void Curve::draw(){
    glBindVertexArray( mVAO );
    glUniformMatrix4fv( mMatrixUniform, 1, GL_FALSE, mMatrix.constData());
-   glDrawArrays(GL_LINE, 0, mVertices.size());
+   glDrawArrays(GL_LINE_STRIP, 0, mVertices.size());
 }
 
 
 void Curve::construct()
 {
-    // range is -10 < x < 10;
-    GLfloat x = sin(10 * x) / (1+x);
-    GLfloat y = sin(10*x)/1+x*x;
+    int n = 25;
+   float xmin=-10.0f,xmax=10.0f,h = (xmax - xmin) / n;
 
 
+    //for (auto x=xmin;x<xmax;x+=h)
 
+   for (int i= xmin; i < xmax; ++i) {
+       //xmax *= 0.1;
+       //xmin *= 0.1;
+      //h = xmax - xmin / n;
+      //float x = sin(2*i);
+       float x =(i);
+       float y = sin(2*x);
+        mVertices.push_back(Vertex{x,y,0,1,0,0});
+        //mVertices.push_back(Vertex{x,y,0,1,0,0});
+        }
 
-
-
+ toFile("/GItRepos/3Dprog22/Curve.txt");
 }
 
 
 
- toFile("C:/Users/thoma/Desktop/3Dprog22-main/3Dprog22/Curve.txt");
-}
+// toFile("C:/Users/thoma/Desktop/3Dprog22-main/3Dprog22/Curve.txt");
+//}
 
 
 

@@ -19,7 +19,7 @@ TriangleSurface::TriangleSurface() : VisualObject()
   // make changes on construct algo then run it to make new txt file.
     //construct();
 
-  readFile("C:/Users/thoma/Desktop/3Dprog22-main/3Dprog22/Trianglee.txt");
+  //readFile("/GItRepos/3Dprog22/Triangle.txt");
 }
 
 TriangleSurface::~TriangleSurface(){}
@@ -118,4 +118,6 @@ void TriangleSurface::construct()
           mVertices.push_back(Vertex{x+h,y+h,z,x,y,z});
       }
 
- toFile("C:/Users/thoma/Desktop/3Dprog22-main/3Dprog22/Trianglee.txt");}
+ toFile("/GItRepos/3Dprog22/Triangle.txt");
+
+}
