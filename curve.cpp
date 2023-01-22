@@ -8,7 +8,7 @@ Curve::Curve() : VisualObject()
 
     //Have write to file under construct function
   // make changes on construct algo then run it to make new txt file.
-   //construct();
+   construct();
 
  //toFile("/GItRepos/3Dprog22/Curve.txt");
 }
@@ -90,21 +90,16 @@ void Curve::draw(){
 
 void Curve::construct()
 {
-    int n = 25;
-   float xmin=-10.0f,xmax=10.0f,h = (xmax - xmin) / n;
+    int n = 250;
+   float xmin=-1.0f,xmax=1.0f,h = (xmax - xmin) / n;
 
 
     //for (auto x=xmin;x<xmax;x+=h)
 
-   for (int i= xmin; i < xmax; ++i) {
-       //xmax *= 0.1;
-       //xmin *= 0.1;
-      //h = xmax - xmin / n;
-      //float x = sin(2*i);
+   for (float i = xmin; i < xmax;i += h) {
        float x =(i);
-       float y = sin(2*x);
+       float y = sin(12*x);
         mVertices.push_back(Vertex{x,y,0,1,0,0});
-        //mVertices.push_back(Vertex{x,y,0,1,0,0});
         }
 
  toFile("/GItRepos/3Dprog22/Curve.txt");
