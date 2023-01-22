@@ -1,6 +1,13 @@
 #include "points.h"
 
-Points::Points()
+
+Points::Points() : VisualObject()
 {
 
 }
+
+Points::~Points(){}
+
+
+void
+

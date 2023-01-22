@@ -90,15 +90,18 @@ void Curve::draw(){
 
 void Curve::construct()
 {
-  float xmin=-10.0f, xmax=10.0f,n=3, h= xmax-xmin/n;
+    // range is -10 < x < 10;
+    GLfloat x = sin(10 * x) / (1+x);
+    GLfloat y = sin(10*x)/1+x*x;
 
-  for (auto x=xmin; x<xmax; x+=h)
-    {
-               x = sin(2*x)+2;
-          mVertices.push_back(Vertex{x,0,0,1,0,0});
-          x = sin(2*x+h)+2;
 
-    }
+
+
+
+
+}
+
+
 
  toFile("C:/Users/thoma/Desktop/3Dprog22-main/3Dprog22/Curve.txt");
 }
