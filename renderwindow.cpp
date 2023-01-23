@@ -50,7 +50,7 @@ RenderWindow::RenderWindow(const QSurfaceFormat &format, MainWindow *mainWindow)
    //Make the gameloop timer;
     mRenderTimer = new QTimer(this);
 
- // mObjects.push_back(new XYZ());
+  mObjects.push_back(new XYZ());
    mObjects.push_back(new Curve());
   //mObjects.push_back(new Curve("/GItRepos/3Dprog22/Curve.txt"));
    // mObjects.push_back(new TriangleSurface());
@@ -153,6 +153,7 @@ void RenderWindow::init()
 // Called each frame - doing the rendering!!!
 void RenderWindow::render()
 {
+
     //Additioal matrixes here
     mPmatrix->setToIdentity();
     mVmatrix->setToIdentity();
