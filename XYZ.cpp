@@ -47,6 +47,7 @@ void XYZ::init(GLint matrixUniform) {
 void XYZ::draw()
 {
    glBindVertexArray( mVAO );
+   //Sending inn the objects transformation/state in each draw call
    glUniformMatrix4fv( mMatrixUniform, 1, GL_FALSE, mMatrix.constData());
    glDrawArrays(GL_LINES, 0, mVertices.size());
 }
