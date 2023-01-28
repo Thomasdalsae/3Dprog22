@@ -17,7 +17,7 @@ TriangleSurface::TriangleSurface() : VisualObject()
 
     //Have write to file under construct function
   // make changes on construct algo then run it to make new txt file.
-    //construct();
+   // construct();
 
   //readFile("/GItRepos/3Dprog22/Triangle.txt");
 }

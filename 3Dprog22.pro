@@ -8,6 +8,7 @@ TARGET      = 3D-programmering
 SOURCES += main.cpp \
     XYZ.cpp \
     curve.cpp \
+    interactiveobject.cpp \
     logger.cpp \
     mainwindow.cpp \
     renderwindow.cpp \
@@ -19,6 +20,7 @@ SOURCES += main.cpp \
 HEADERS += \
     XYZ_H.h \
     curve.h \
+    interactiveobject.h \
     logger.h \
     mainwindow.h \
     renderwindow.h \

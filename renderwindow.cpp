@@ -49,12 +49,14 @@ RenderWindow::RenderWindow(const QSurfaceFormat &format, MainWindow *mainWindow)
    //Make the gameloop timer;
     mRenderTimer = new QTimer(this);
 
-  mObjects.push_back(new XYZ());
+  //mObjects.push_back(new XYZ());
    mObjects.push_back(new Curve());
-  //mObjects.push_back(new Curve("/GItRepos/3Dprog22/Curve.txt"));
+ // mObjects.push_back(new Curve("/GItRepos/3Dprog22/Curve.txt"));
    //mObjects.push_back(new TriangleSurface());
     //Directly read TXT file without contruct,,
     //mObjects.push_back(new TriangleSurface("F:/GItRepos/3Dprog22/Triangle.txt"));
+   // mia = new InteractiveObject();
+    //mObjects.push_back(mia);
 }
 
 RenderWindow::~RenderWindow()
@@ -343,7 +345,7 @@ void RenderWindow::keyPressEvent(QKeyEvent *event)
     /*
     if (event->key()==Qt::Key_D)
         mia.move(0,1,0,0);
-        */
+      */
     //You get the keyboard input like this
 //    if(event->key() == Qt::Key_A)
 //    {

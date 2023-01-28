@@ -11,6 +11,7 @@
 #include "visualobject.h"
 #include "trianglesurface.h"
 #include "curve.h"
+#include "interactiveobject.h"
 
 class QOpenGLContext;
 class Shader;
@@ -40,6 +41,7 @@ private:
 
     //Vertex m_v;
     std::vector<VisualObject*> mObjects;
+    VisualObject* mia;
     void init();            //initialize things we need before rendering
 
     std::vector<Vertex> mVertices;
