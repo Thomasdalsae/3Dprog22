@@ -7,6 +7,7 @@ TARGET      = 3D-programmering
 
 SOURCES += main.cpp \
     XYZ.cpp \
+    camera.cpp \
     curve.cpp \
     interactiveobject.cpp \
     logger.cpp \
@@ -19,6 +20,7 @@ SOURCES += main.cpp \
 
 HEADERS += \
     XYZ_H.h \
+    camera.h \
     curve.h \
     interactiveobject.h \
     logger.h \

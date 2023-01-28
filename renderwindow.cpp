@@ -52,7 +52,7 @@ RenderWindow::RenderWindow(const QSurfaceFormat &format, MainWindow *mainWindow)
  // mObjects.push_back(new XYZ());
    //mObjects.push_back(new Curve());
  // mObjects.push_back(new Curve("/GItRepos/3Dprog22/Curve.txt"));
-   //mObjects.push_back(new TriangleSurface());
+   mObjects.push_back(new TriangleSurface());
     //Directly read TXT file without contruct,,
     //mObjects.push_back(new TriangleSurface("F:/GItRepos/3Dprog22/Triangle.txt"));
     mia = new InteractiveObject();
@@ -342,10 +342,16 @@ void RenderWindow::keyPressEvent(QKeyEvent *event)
         mMainWindow->close();       //Shuts down the whole program
     }
 
-    /*
-    if (event->key()==Qt::Key_D)
-        mia.move(0,1,0,0);
-      */
+
+    if (event->key() == Qt::Key_D)
+    {
+        mia->move(0.1f,0.0f,0.0f);
+    }
+
+    if (event->key() == Qt::Key_A)
+    {
+        mia->move(-0.1f,0.0f,0.0f);
+    }
     //You get the keyboard input like this
 //    if(event->key() == Qt::Key_A)
 //    {
