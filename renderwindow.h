@@ -12,6 +12,7 @@
 #include "trianglesurface.h"
 #include "curve.h"
 #include "interactiveobject.h"
+#include "camera.h"
 
 class QOpenGLContext;
 class Shader;
@@ -42,6 +43,7 @@ private:
     //Vertex m_v;
     std::vector<VisualObject*> mObjects;
     VisualObject* mia;
+    Camera mCamera;
     void init();            //initialize things we need before rendering
 
     std::vector<Vertex> mVertices;
@@ -54,16 +56,17 @@ private:
 
     Shader *mShaderProgram{nullptr};    //holds pointer the GLSL shader program
 
-    GLint mPmatrixUniform;
+    GLint mPmatrixUniform;  //OPenGL reference to the uniform in the shader program
     GLint mVmatrixUniform;
     GLint mMmatrixUniform;
 
     GLuint mVAO;                        //OpenGL reference to our VAO
     GLuint mVBO;                        //OpenGL reference to our VBO
 
+
     QMatrix4x4 *mMVPmatrix{nullptr};         //The matrix with the transform for the object we draw
     QMatrix4x4 *mPmatrix{nullptr};
-    QMatrix4x4 *mVmatrix{nullptr};           //Going into the camera class
+    QMatrix4x4 *mVmatrix{nullptr};
 
     QTimer *mRenderTimer{nullptr};           //timer that drives the gameloop
     QElapsedTimer mTimeStart;               //time variable that reads the calculated FPS

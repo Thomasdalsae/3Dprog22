@@ -14,6 +14,7 @@
 #include "shader.h"
 #include "mainwindow.h"
 #include "logger.h"
+//#include "camera.h"
 
 
 
@@ -49,10 +50,10 @@ RenderWindow::RenderWindow(const QSurfaceFormat &format, MainWindow *mainWindow)
    //Make the gameloop timer;
     mRenderTimer = new QTimer(this);
 
- // mObjects.push_back(new XYZ());
+ //mObjects.push_back(new XYZ());
    //mObjects.push_back(new Curve());
- // mObjects.push_back(new Curve("/GItRepos/3Dprog22/Curve.txt"));
-   mObjects.push_back(new TriangleSurface());
+  //mObjects.push_back(new Curve("/GItRepos/3Dprog22/Curve.txt"));
+ // mObjects.push_back(new TriangleSurface());
     //Directly read TXT file without contruct,,
     //mObjects.push_back(new TriangleSurface("F:/GItRepos/3Dprog22/Triangle.txt"));
     mia = new InteractiveObject();
@@ -64,7 +65,7 @@ RenderWindow::~RenderWindow()
 
 
 
-    mObjects.clear();
+    //mObjects.clear();
 
     //cleans up the GPU memory
     glDeleteVertexArrays( 1, &mVAO );
@@ -139,7 +140,7 @@ void RenderWindow::init()
     mPmatrixUniform = glGetUniformLocation( mShaderProgram->getProgram(), "pmatrix" );
     mVmatrixUniform = glGetUniformLocation(mShaderProgram->getProgram(),"vmatrix");
     mMmatrixUniform = glGetUniformLocation( mShaderProgram->getProgram(), "matrix" );
-
+        mCamera.init(mPmatrixUniform,mVmatrixUniform);
     for (auto it=mObjects.begin();it!= mObjects.end(); it++)
         (*it)->init(mPmatrixUniform);
     for (auto it=mObjects.begin();it!= mObjects.end(); it++)
@@ -156,26 +157,19 @@ void RenderWindow::render()
 {
 
     //Additioal matrixes here
-    mPmatrix->setToIdentity();
-    mVmatrix->setToIdentity();
-    mPmatrix->perspective(60,4.0/3.0,0.1,10.0);
+    //mPmatrix->setToIdentity();
+    //mVmatrix->setToIdentity();
+   // mPmatrix->perspective(60,4.0/3.0,0.1,10.0);
 
-    qDebug()<<*mPmatrix;
-    //Moveing camera
-    mVmatrix->translate(0,0,-5);
-    //More matrixes, going to be placed in cameraclass
+    mCamera.init(mPmatrixUniform, mVmatrixUniform);
+    mCamera.perspective(60,4.0/3.0,0.1,10.0);
 
-    glUniformMatrix4fv(mPmatrixUniform,1,GL_FALSE,mPmatrix->constData());
-    glUniformMatrix4fv(mVmatrixUniform,1,GL_FALSE,mVmatrix->constData());
-    //ree
-
-    mMVPmatrix->setToIdentity();
     mTimeStart.restart(); //restart FPS clock
     mContext->makeCurrent(this); //must be called every frame (every time mContext->swapBuffers is called)
 
     initializeOpenGLFunctions();    //must call this every frame it seems...
 
-    //clear the screen for each redraw
+       //clear the screen for each redraw
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     //what shader to use
@@ -183,31 +177,37 @@ void RenderWindow::render()
 
 
 
+
+    //Moveing camera
+    //mVmatrix->translate(0,0,-5);
+    mCamera.lookAt(QVector3D{0,0,5},QVector3D{0,0,0}, QVector3D{0,1,0});
+    mCamera.update();
+
 //the actual draw call
+    for (auto it=mObjects.begin();it!= mObjects.end(); it++)
+        (*it)->draw();
+    //ree
+
+    mMVPmatrix->setToIdentity();
+
+   // qDebug()<<*mPmatrix;
+
+
+
+
     //xyz.draw();
 
 
 
-        glUseProgram(mShaderProgram->getProgram());
-    for (auto it=mObjects.begin();it!= mObjects.end(); it++)
-        (*it)->draw();
 
-
-    //trianglesurface.readFile("Triangle.txt");
-   //glDrawArrays(GL_TRIANGLES,      //draw mode
-     //            0,                 //position of first vertex to draw (in the VBO inside the VAO!)
-       //          mVertices.size());                //how many vertices should be drawn - 3 for the triangle
-    //glDrawArrays(GL_LINES, 0, 3);
-    //glDrawArrays(GL_LINE_STRIP, 0, 3);
-    //glDrawArrays(GL_LINE_LOOP, 0, 6);
 
     //Calculate framerate before
     // checkForGLerrors() because that call takes a long time
     // and before swapBuffers(), else it will show the vsync time
-    calculateFramerate();
+   // calculateFramerate();
 
     //using our expanded OpenGL debugger to check if everything is OK.
-    checkForGLerrors();
+    //checkForGLerrors();
 
     //Qt require us to call this swapBuffers() -function.
     // swapInterval is 1 by default which means that swapBuffers() will (hopefully) block

@@ -1,6 +1,6 @@
 #include "camera.h"
 
-Camera::Camera() : mEye{0,0,0}
+Camera::Camera() : mEye{0,0,-5}
 {
 mPmatrix->setToIdentity();
 mVmatrix->setToIdentity();
@@ -31,3 +31,4 @@ void Camera::update()
     glUniformMatrix4fv(mPmatrixUniform,1,GL_FALSE,mPmatrix->constData()); // if using our own matrices use GL_TRUE INSTEAD
     glUniformMatrix4fv(mVmatrixUniform,1,GL_FALSE,mVmatrix->constData()); // if using our own matrices use GL_TRUE INSTEAD
 
+}
