@@ -49,14 +49,14 @@ RenderWindow::RenderWindow(const QSurfaceFormat &format, MainWindow *mainWindow)
    //Make the gameloop timer;
     mRenderTimer = new QTimer(this);
 
-  //mObjects.push_back(new XYZ());
-   mObjects.push_back(new Curve());
+ // mObjects.push_back(new XYZ());
+   //mObjects.push_back(new Curve());
  // mObjects.push_back(new Curve("/GItRepos/3Dprog22/Curve.txt"));
    //mObjects.push_back(new TriangleSurface());
     //Directly read TXT file without contruct,,
     //mObjects.push_back(new TriangleSurface("F:/GItRepos/3Dprog22/Triangle.txt"));
-   // mia = new InteractiveObject();
-    //mObjects.push_back(mia);
+    mia = new InteractiveObject();
+    mObjects.push_back(mia);
 }
 
 RenderWindow::~RenderWindow()
