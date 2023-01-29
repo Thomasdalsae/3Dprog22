@@ -27,7 +27,7 @@ OctahedronBall::~OctahedronBall()
 //! lagTriangel() creates vertex data for a triangle's 3 vertices. This is done in the
 //! final step of recursion.
 //
-/*
+
 void OctahedronBall::lagTriangel(const QVector3D &v1, const QVector3D &v2, const QVector3D &v3)
 {
 
@@ -38,7 +38,7 @@ void OctahedronBall::lagTriangel(const QVector3D &v1, const QVector3D &v2, const
    v = Vertex{v3.x(), v3.y(), v3.z(), v3.x(), v3.y(), v3.z()};
    mVertices.push_back(v);
 }
-*/
+/*
 void OctahedronBall::lagTriangel(const QVector3D& v1, const QVector3D& v2,
 const QVector3D& v3)
 {
@@ -49,7 +49,7 @@ const QVector3D& v3)
    v = Vertex{v3.x, v3.y, v3.z, v3.x, v3.y, v3.z};
    mVertices.push_back(v);
 }
-
+*/
 
 // Rekursiv subdivisjon av triangel
 //!

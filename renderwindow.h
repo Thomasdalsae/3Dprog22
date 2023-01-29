@@ -43,7 +43,7 @@ private:
     //Vertex m_v;
     std::vector<VisualObject*> mObjects;
     VisualObject* mia;
-    Camera mCamera;
+    Camera mCamera{};
     void init();            //initialize things we need before rendering
 
     std::vector<Vertex> mVertices;

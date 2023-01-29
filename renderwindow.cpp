@@ -14,7 +14,7 @@
 #include "shader.h"
 #include "mainwindow.h"
 #include "logger.h"
-//#include "camera.h"
+#include "camera.h"
 
 
 
@@ -50,12 +50,12 @@ RenderWindow::RenderWindow(const QSurfaceFormat &format, MainWindow *mainWindow)
    //Make the gameloop timer;
     mRenderTimer = new QTimer(this);
 
- //mObjects.push_back(new XYZ());
-   //mObjects.push_back(new Curve());
+        mObjects.push_back(new XYZ());
+        mObjects.push_back(new Curve());
   //mObjects.push_back(new Curve("/GItRepos/3Dprog22/Curve.txt"));
  // mObjects.push_back(new TriangleSurface());
     //Directly read TXT file without contruct,,
-    //mObjects.push_back(new TriangleSurface("F:/GItRepos/3Dprog22/Triangle.txt"));
+   // mObjects.push_back(new TriangleSurface("F:/GItRepos/3Dprog22/Triangle.txt"));
     mia = new InteractiveObject();
     mObjects.push_back(mia);
 }
@@ -65,7 +65,7 @@ RenderWindow::~RenderWindow()
 
 
 
-    //mObjects.clear();
+    mObjects.clear();
 
     //cleans up the GPU memory
     glDeleteVertexArrays( 1, &mVAO );
@@ -141,10 +141,12 @@ void RenderWindow::init()
     mVmatrixUniform = glGetUniformLocation(mShaderProgram->getProgram(),"vmatrix");
     mMmatrixUniform = glGetUniformLocation( mShaderProgram->getProgram(), "matrix" );
         mCamera.init(mPmatrixUniform,mVmatrixUniform);
+        /*
     for (auto it=mObjects.begin();it!= mObjects.end(); it++)
         (*it)->init(mPmatrixUniform);
     for (auto it=mObjects.begin();it!= mObjects.end(); it++)
         (*it)->init(mVmatrixUniform);
+    */
     for (auto it=mObjects.begin();it!= mObjects.end(); it++)
         (*it)->init(mMmatrixUniform);
     glBindVertexArray(0);       //unbinds any VertexArray - good practice

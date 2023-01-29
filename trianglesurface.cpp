@@ -3,14 +3,14 @@
 TriangleSurface::TriangleSurface() : VisualObject()
 {
   //                x    y     z   r g b
-
+/*
   Vertex v0{0.0,0.0,0.0, 1,0,0};    mVertices.push_back(v0);
   Vertex v1(0.5,0.0,0.0, 0,1,0);    mVertices.push_back(v1);
   Vertex v2{0.5,0.5,0.0, 0,0,1};    mVertices.push_back(v2);
   Vertex v3{0.0,0.0,0.0, 0,0,1};    mVertices.push_back(v3);
   Vertex v4{0.5,0.5,0.0, 0,1,0};    mVertices.push_back(v4);
   Vertex v5{0.0,0.5,0.0, 1,0,0};    mVertices.push_back(v5);
-
+*/
 
   mMatrix.setToIdentity();
   //readFile("C:/Users/thoma/Desktop/3Dprog22-main/3Dprog22/Triangle.txt");
