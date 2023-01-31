@@ -103,6 +103,10 @@ void Curve::construct()
         }
 
  toFile("/GItRepos/3Dprog22/Curve.txt");
+
+
+
+
 }
 
 

@@ -8,7 +8,7 @@ class InteractiveObject : public VisualObject
 public:
     InteractiveObject();
     ~InteractiveObject() override;
-    void init(GLint matrixUniform)override;
+    void init(GLint matrixuniform)override;
     void draw() override;
     void move(float x , float y , float z);
 

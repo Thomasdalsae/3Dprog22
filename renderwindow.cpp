@@ -11,6 +11,7 @@
 #include <fstream>
 #include <iostream>
 
+
 #include "shader.h"
 #include "mainwindow.h"
 #include "logger.h"
@@ -50,13 +51,15 @@ RenderWindow::RenderWindow(const QSurfaceFormat &format, MainWindow *mainWindow)
    //Make the gameloop timer;
     mRenderTimer = new QTimer(this);
 
-        mObjects.push_back(new XYZ());
-        mObjects.push_back(new Curve());
+   //mObjects.push_back(new XYZ());
+   //mObjects.push_back(new Curve());
+   mObjects.push_back(new Cube());
   //mObjects.push_back(new Curve("/GItRepos/3Dprog22/Curve.txt"));
- // mObjects.push_back(new TriangleSurface());
+   // mObjects.push_back(new TriangleSurface()); // make a new text file
     //Directly read TXT file without contruct,,
-   // mObjects.push_back(new TriangleSurface("F:/GItRepos/3Dprog22/Triangle.txt"));
-    mia = new InteractiveObject();
+   //mObjects.push_back(new TriangleSurface("F:/GItRepos/3Dprog22/Trianglee.txt"));
+   // mia = new InteractiveObject();
+   mia = new Cube();
     mObjects.push_back(mia);
 }
 
@@ -218,8 +221,13 @@ void RenderWindow::render()
 
     //just to make the triangle rotate - tweak this:
     //                   degree, x,   y,   z -axis
-    //if(mRotate)
-    //    mMVPmatrix->rotate(2.f, 0.f, 1.0, 0.f);
+    if(mRotate){
+        //mMVPmatrix->rotate(2.f, 0.f, 1.0, 0.f);
+        //mPmatrix->rotate(2.f, 0.f, 1.0, 0.f);
+        mVmatrix->rotate(2.f, 0.f, 1.0, 0.f);
+
+    }
+
 }
 
 //This function is called from Qt when window is exposed (shown)
@@ -354,6 +362,21 @@ void RenderWindow::keyPressEvent(QKeyEvent *event)
     {
         mia->move(-0.1f,0.0f,0.0f);
     }
+
+    if (event->key() == Qt::Key_W)
+    {
+        mia->move(0.0f,0.1f,0.0f);
+    }
+  if (event->key() == Qt::Key_S)
+    {
+        mia->move(0.0f,-0.1f,0.0f);
+    }
+
+  if(event->key() == Qt::Key_Q){
+
+  mia->Rotate(0.1f,0.0f,0.0f,0.0f);
+  }
+
     //You get the keyboard input like this
 //    if(event->key() == Qt::Key_A)
 //    {

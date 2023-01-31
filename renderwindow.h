@@ -11,8 +11,9 @@
 #include "visualobject.h"
 #include "trianglesurface.h"
 #include "curve.h"
-#include "interactiveobject.h"
 #include "camera.h"
+#include "cube.h"
+#include "interactiveobject.h"
 
 class QOpenGLContext;
 class Shader;
