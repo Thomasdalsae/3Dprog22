@@ -1,6 +1,6 @@
 #include "cube.h"
 
-Cube::Cube() : mx{0.0f}, my{0.0f}, mz{0.0f}, rl{0.0f}, rr{0.0f}, ru{0.0f}, rd {0.0f}
+Cube::Cube() : mx{0.0f}, my{0.0f}, mz{0.0f}, RotationAngle{0.0f}, RotationX{0.0f}, RotationY{0.0f}, FloatZ {0.0f}
 
 
 {
@@ -117,16 +117,28 @@ void Cube::move(float dx, float dy , float dz){
     my += dy;
     mz += dz;
 
+
+
     mMatrix.translate(mx,my,mz); // need to tell it to move
+
+    mx = 0;
+    my = 0;
+    mz = 0;
 }
 
 void Cube::Rotate(float dl, float dr, float du, float dd)
 {
-  rl += dl;
-  rr += dr;
-  ru += du;
-  rd += dd;
+  RotationAngle += dl;
+  RotationX += dr;
+  RotationY += du;
+  FloatZ += dd;
 
-  mMatrix.rotate(rl,rr,ru,rd);
+
+  mMatrix.rotate(RotationAngle,RotationX,RotationY,FloatZ);
+
+  RotationAngle = 0;
+  RotationX = 0;
+  RotationY = 0;
+  FloatZ = 0;
 }
 

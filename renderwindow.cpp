@@ -53,7 +53,7 @@ RenderWindow::RenderWindow(const QSurfaceFormat &format, MainWindow *mainWindow)
 
    //mObjects.push_back(new XYZ());
    //mObjects.push_back(new Curve());
-   mObjects.push_back(new Cube());
+   //mObjects.push_back(new Cube());
   //mObjects.push_back(new Curve("/GItRepos/3Dprog22/Curve.txt"));
    // mObjects.push_back(new TriangleSurface()); // make a new text file
     //Directly read TXT file without contruct,,
@@ -355,26 +355,51 @@ void RenderWindow::keyPressEvent(QKeyEvent *event)
 
     if (event->key() == Qt::Key_D)
     {
-        mia->move(0.1f,0.0f,0.0f);
+        mia->move(1.0f,0.0f,0.0f);
     }
 
     if (event->key() == Qt::Key_A)
     {
-        mia->move(-0.1f,0.0f,0.0f);
+        mia->move(-1.0f,0.0f,0.0f);
     }
 
     if (event->key() == Qt::Key_W)
     {
-        mia->move(0.0f,0.1f,0.0f);
+        mia->move(0.0f,1.0f,0.0f);
     }
   if (event->key() == Qt::Key_S)
     {
-        mia->move(0.0f,-0.1f,0.0f);
+        mia->move(0.0f,-1.0f,0.0f);
     }
+
+
+  if(event->key() == Qt::Key_1)
+  {
+      mia->move(0.0f,0.0f,1.0f);
+  }
+
+  if(event->key() == Qt::Key_2)
+  {
+      mia->move(0.0f,0.0f,-1.0f);
+  }
 
   if(event->key() == Qt::Key_Q){
 
-  mia->Rotate(0.1f,0.0f,0.0f,0.0f);
+  mia->Rotate(1.0f,1.0f,0.0f,0.0f);
+  }
+
+  if(event->key() == Qt::Key_E){
+
+  mia->Rotate(1.0f,-1.0f,0.0f,0.0f);
+  }
+    if(event->key() == Qt::Key_Z){
+
+  mia->Rotate(1.0f,0.0f,1.0f,0.0f);
+  }
+
+  if(event->key() == Qt::Key_C){
+
+  mia->Rotate(1.0f,0.0f,-1.0f,0.0f);
   }
 
     //You get the keyboard input like this

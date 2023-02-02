@@ -12,7 +12,7 @@ public:
    void move(float x, float y, float z);
    void Rotate(float l,float r, float u, float d );
 private:
-   float mx, my ,mz ,rl , rr ,ru ,rd;
+   float mx, my ,mz ,RotationAngle , RotationX ,RotationY ,FloatZ;
 };
 
 #endif // CUBE_H
