@@ -55,12 +55,13 @@ RenderWindow::RenderWindow(const QSurfaceFormat &format, MainWindow *mainWindow)
    //mObjects.push_back(new Curve());
    //mObjects.push_back(new Cube());
   //mObjects.push_back(new Curve("/GItRepos/3Dprog22/Curve.txt"));
-   // mObjects.push_back(new TriangleSurface()); // make a new text file
+    //mObjects.push_back(new TriangleSurface()); // make a new text file
+    //TriangleSurface("F:/GItRepos/3Dprog22/Triangle.txt");
     //Directly read TXT file without contruct,,
    //mObjects.push_back(new TriangleSurface("F:/GItRepos/3Dprog22/Trianglee.txt"));
    // mia = new InteractiveObject();
    mia = new Cube();
-    mObjects.push_back(mia);
+   mObjects.push_back(mia);
 }
 
 RenderWindow::~RenderWindow()
@@ -392,12 +393,12 @@ void RenderWindow::keyPressEvent(QKeyEvent *event)
 
   mia->Rotate(1.0f,-1.0f,0.0f,0.0f);
   }
-    if(event->key() == Qt::Key_A){
+    if(event->key() == Qt::Key_D){
 
   mia->Rotate(1.0f,0.0f,1.0f,0.0f);
   }
 
-  if(event->key() == Qt::Key_D){
+  if(event->key() == Qt::Key_A){
 
   mia->Rotate(1.0f,0.0f,-1.0f,0.0f);
   }

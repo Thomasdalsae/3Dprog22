@@ -12,14 +12,17 @@ TriangleSurface::TriangleSurface() : VisualObject()
   Vertex v5{0.0,0.5,0.0, 1,0,0};    mVertices.push_back(v5);
 */
 
+
   mMatrix.setToIdentity();
   //readFile("C:/Users/thoma/Desktop/3Dprog22-main/3Dprog22/Triangle.txt");
 
     //Have write to file under construct function
   // make changes on construct algo then run it to make new txt file.
-   // construct();
+    //construct();
+ //toFile("/GItRepos/3Dprog22/Triangle.txt");
 
- // readFile("/GItRepos/3Dprog22/Triangle.txt");
+  //readFile("/GItRepos/3Dprog22/Triangle.txt");
+
 }
 
 TriangleSurface::~TriangleSurface(){}
@@ -118,6 +121,6 @@ void TriangleSurface::construct()
           mVertices.push_back(Vertex{x+h,y+h,z,x,y,z});
       }
 
- toFile("/GItRepos/3Dprog22/Triangle.txt");
+ toFile("/GItRepos/3Dprog22/Trianglee.txt");
 
 }
