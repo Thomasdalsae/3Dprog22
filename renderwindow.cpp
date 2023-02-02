@@ -353,51 +353,51 @@ void RenderWindow::keyPressEvent(QKeyEvent *event)
     }
 
 
-    if (event->key() == Qt::Key_D)
+    if (event->key() == Qt::Key_Right)
     {
         mia->move(1.0f,0.0f,0.0f);
     }
 
-    if (event->key() == Qt::Key_A)
+    if (event->key() == Qt::Key_Left)
     {
         mia->move(-1.0f,0.0f,0.0f);
     }
 
-    if (event->key() == Qt::Key_W)
+    if (event->key() == Qt::Key_Up)
     {
         mia->move(0.0f,1.0f,0.0f);
     }
-  if (event->key() == Qt::Key_S)
+  if (event->key() == Qt::Key_Down)
     {
         mia->move(0.0f,-1.0f,0.0f);
     }
 
 
-  if(event->key() == Qt::Key_1)
+  if(event->key() == Qt::Key_Q)
   {
       mia->move(0.0f,0.0f,1.0f);
   }
 
-  if(event->key() == Qt::Key_2)
+  if(event->key() == Qt::Key_E)
   {
       mia->move(0.0f,0.0f,-1.0f);
   }
 
-  if(event->key() == Qt::Key_Q){
+  if(event->key() == Qt::Key_S){
 
   mia->Rotate(1.0f,1.0f,0.0f,0.0f);
   }
 
-  if(event->key() == Qt::Key_E){
+  if(event->key() == Qt::Key_W){
 
   mia->Rotate(1.0f,-1.0f,0.0f,0.0f);
   }
-    if(event->key() == Qt::Key_Z){
+    if(event->key() == Qt::Key_A){
 
   mia->Rotate(1.0f,0.0f,1.0f,0.0f);
   }
 
-  if(event->key() == Qt::Key_C){
+  if(event->key() == Qt::Key_D){
 
   mia->Rotate(1.0f,0.0f,-1.0f,0.0f);
   }
