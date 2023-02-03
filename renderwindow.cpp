@@ -59,8 +59,10 @@ RenderWindow::RenderWindow(const QSurfaceFormat &format, MainWindow *mainWindow)
     //TriangleSurface("F:/GItRepos/3Dprog22/Triangle.txt");
     //Directly read TXT file without contruct,,
    //mObjects.push_back(new TriangleSurface("F:/GItRepos/3Dprog22/Trianglee.txt"));
-   // mia = new InteractiveObject();
+    //mia = new InteractiveObject();
    mia = new Cube();
+
+  //mia = new OctahedronBall(2);
    mObjects.push_back(mia);
 }
 
