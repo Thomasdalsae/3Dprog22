@@ -65,7 +65,6 @@ Cube::Cube() : mx{0.0f}, my{0.0f}, mz{0.0f}, RotationAngle{0.0f}, RotationX{0.0f
     mVertices.push_back(Vertex{1.0,-1.0,1.0,1,0,0});
 
 
-
 }
 
 Cube::~Cube(){}
