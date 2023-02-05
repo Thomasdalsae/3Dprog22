@@ -49,14 +49,13 @@ RenderWindow::RenderWindow(const QSurfaceFormat &format, MainWindow *mainWindow)
         mVmatrix->setToIdentity();
    //Make the gameloop timer;
     mRenderTimer = new QTimer(this);
-    InitMoveKeys();
 
-    QString path = QDir().cleanPath(QDir().absoluteFilePath("../../vertices.dat"));
+    InitMoveKeys();
 
    //mObjects.push_back(new XYZ());
    //mObjects.push_back(new Curve());
    mObjects.push_back(new Cube());
-   mObjects.push_back(new TriangleSurface{path.toStdString()});
+   mObjects.push_back(new TriangleSurface{"vertices.dat"});
    auto trSurf = reinterpret_cast<TriangleSurface*>(mObjects[1]);
    trSurf->drawUnitNormals(true);
   //mObjects.push_back(new Curve("/GItRepos/3Dprog22/Curve.txt"));
@@ -65,7 +64,7 @@ RenderWindow::RenderWindow(const QSurfaceFormat &format, MainWindow *mainWindow)
     //Directly read TXT file without contruct,,
    //mObjects.push_back(new TriangleSurface("F:/GItRepos/3Dprog22/Trianglee.txt"));
     //mia = new InteractiveObject();
-   mia = mObjects[1];
+   mia = mObjects[0];
 
   //mia = new OctahedronBall(2);
    //mObjects.push_back(mia);
