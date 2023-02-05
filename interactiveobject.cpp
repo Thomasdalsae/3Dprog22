@@ -5,7 +5,6 @@ InteractiveObject::InteractiveObject() : mx{0.0f}, my{0.0f}, mz{0.0f}, RotationA
     mVertices.push_back(Vertex{0,0,0,1,1,0});
     mVertices.push_back(Vertex{1,0,0,1,1,0});
     mVertices.push_back(Vertex{0,1,1,1,1,0});
-
 }
 
 InteractiveObject::~InteractiveObject(){};
