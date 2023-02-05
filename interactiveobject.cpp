@@ -1,6 +1,6 @@
 #include "interactiveobject.h"
 
-InteractiveObject::InteractiveObject() : mx{0.0f}, my{0.0f}, mz{0.0f}
+InteractiveObject::InteractiveObject() : mx{0.0f}, my{0.0f}, mz{0.0f}, RotationAngle{0.0f}, RotationX{0.0f}, RotationY{0.0f}, FloatZ {0.0f}
 {
     mVertices.push_back(Vertex{0,0,0,1,1,0});
     mVertices.push_back(Vertex{1,0,0,1,1,0});
@@ -58,5 +58,27 @@ void InteractiveObject::move(float dx, float dy , float dz){
     my += dy;
     mz += dz;
 
+
+
     mMatrix.translate(mx,my,mz); // need to tell it to move
+
+    mx = 0;
+    my = 0;
+    mz = 0;
+}
+
+void InteractiveObject::Rotate(float dl, float dr, float du, float dd)
+{
+  RotationAngle += dl;
+  RotationX += dr;
+  RotationY += du;
+  FloatZ += dd;
+
+
+  mMatrix.rotate(RotationAngle,RotationX,RotationY,FloatZ);
+
+  RotationAngle = 0;
+  RotationX = 0;
+  RotationY = 0;
+  FloatZ = 0;
 }
