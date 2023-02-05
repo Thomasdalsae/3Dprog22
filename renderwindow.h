@@ -35,6 +35,12 @@ public:
     bool XYZ_render{false};
     bool Curve_render{false};
 
+    enum renderState {
+        none = -1,
+        xyz,
+        curve,
+    };
+
 private slots:
     void render();          //the actual render - function
 
@@ -44,6 +50,7 @@ private:
     std::map<int, bool> pressedKeys{};
     std::vector<VisualObject*> mObjects;
     VisualObject* mia;
+    renderState mState{none};
     Camera mCamera{};
     void init();            //initialize things we need before rendering
 
