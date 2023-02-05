@@ -12,6 +12,7 @@
 #include <iostream>
 
 
+#include "cube.h"
 #include "shader.h"
 #include "mainwindow.h"
 #include "logger.h"
@@ -52,7 +53,7 @@ RenderWindow::RenderWindow(const QSurfaceFormat &format, MainWindow *mainWindow)
     mRenderTimer = new QTimer(this);
 
    mObjects.push_back(new XYZ());
-   mObjects.push_back(new Curve());
+   //mObjects.push_back(new Curve());
    //mObjects.push_back(new Cube());
    // mObjects.push_back(new TriangleSurface);
   //mObjects.push_back(new Curve("/GItRepos/3Dprog22/Curve.txt"));
@@ -194,13 +195,16 @@ void RenderWindow::render()
 
 
 
-
-
 //the actual draw call
+
     for (auto it=mObjects.begin();it!= mObjects.end(); it++)
         (*it)->draw();
     //ree
-
+/*
+ if (XYZ_render == true){
+    XYZ().draw();
+ }
+*/
     mMVPmatrix->setToIdentity();
 
    // qDebug()<<*mPmatrix;
@@ -210,12 +214,6 @@ void RenderWindow::render()
 
     //xyz.draw();
 
-  if(mRotate){
-        //mMVPmatrix->rotate(2.f, 0.f, 1.0, 0.f);
-        //mPmatrix->rotate(2.f, 0.f, 1.0, 0.f);
-        mVmatrix->rotate(2.f, 0.f, 1.0, 0.f);
-
-    }
 
 
 

@@ -48,9 +48,6 @@ private:
     void init();            //initialize things we need before rendering
 
     std::vector<Vertex> mVertices;
-    XYZ xyz{};
-    TriangleSurface trianglesurface{};
-    Curve curve{};
 
     QOpenGLContext *mContext{nullptr};  //Our OpenGL context
     bool mInitialized{false};
