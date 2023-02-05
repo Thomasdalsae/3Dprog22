@@ -13,10 +13,13 @@
 #include <QDir>
 
 
+#include "XYZ_H.h"
+#include "cube.h"
 #include "shader.h"
 #include "mainwindow.h"
 #include "logger.h"
 #include "camera.h"
+#include "trianglesurface.h"
 
 
 
@@ -50,6 +53,7 @@ RenderWindow::RenderWindow(const QSurfaceFormat &format, MainWindow *mainWindow)
    //Make the gameloop timer;
     mRenderTimer = new QTimer(this);
 
+
     InitMoveKeys();
 
    //mObjects.push_back(new XYZ());
@@ -58,6 +62,12 @@ RenderWindow::RenderWindow(const QSurfaceFormat &format, MainWindow *mainWindow)
    mObjects.push_back(new TriangleSurface{"../3Dprog22/vertices.dat"});
    auto trSurf = reinterpret_cast<TriangleSurface*>(mObjects[1]);
    trSurf->drawUnitNormals(true);
+
+   mObjects.push_back(new XYZ());
+   //mObjects.push_back(new Curve());
+   //mObjects.push_back(new Cube());
+   // mObjects.push_back(new TriangleSurface);
+
   //mObjects.push_back(new Curve("/GItRepos/3Dprog22/Curve.txt"));
     //mObjects.push_back(new TriangleSurface()); // make a new text file
     //TriangleSurface("F:/GItRepos/3Dprog22/Triangle.txt");
@@ -192,11 +202,17 @@ void RenderWindow::render()
     MoveByInput(mia);
     RotateByInput(mia);
 
+
 //the actual draw call
+
     for (auto it=mObjects.begin();it!= mObjects.end(); it++)
         (*it)->draw();
     //ree
-
+/*
+ if (XYZ_render == true){
+    XYZ().draw();
+ }
+*/
     mMVPmatrix->setToIdentity();
 
     //Calculate framerate before

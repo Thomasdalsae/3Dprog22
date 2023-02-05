@@ -6,14 +6,10 @@
 #include <QTimer>
 #include <QElapsedTimer>
 #include <vector>
-#include "XYZ_H.h"
-#include "vertex.h"
+
 #include "visualobject.h"
-#include "trianglesurface.h"
-#include "curve.h"
 #include "camera.h"
-#include "cube.h"
-#include "interactiveobject.h"
+
 #include "octahedronball.h"
 
 class QOpenGLContext;
