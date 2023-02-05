@@ -39,6 +39,29 @@
      </widget>
     </item>
     <item>
+     <widget class="QPushButton" name="Triangle">
+      <property name="toolTipDuration">
+       <number>-1</number>
+      </property>
+      <property name="text">
+       <string>Render Plane</string>
+      </property>
+      <property name="checkable">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="Cube">
+      <property name="text">
+       <string>Render Cube</string>
+      </property>
+      <property name="checkable">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+    <item>
      <widget class="QPushButton" name="rotationButton">
       <property name="minimumSize">
        <size>

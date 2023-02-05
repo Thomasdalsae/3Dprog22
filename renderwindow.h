@@ -34,6 +34,8 @@ public:
     bool mRotate{true};     //Check if triangle should rotate
     bool XYZ_render{false};
     bool Curve_render{false};
+    bool Plane_render{false};
+    bool Cube_render{false};
 
 private slots:
     void render();          //the actual render - function

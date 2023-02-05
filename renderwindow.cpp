@@ -43,7 +43,7 @@ RenderWindow::RenderWindow(const QSurfaceFormat &format, MainWindow *mainWindow)
 
     //This is the matrix used to transform (rotate) the triangle
     //You could do without, but then you have to simplify the shader and shader setup
-        mMVPmatrix = new QMatrix4x4{};
+    mMVPmatrix = new QMatrix4x4{};
         mMVPmatrix->setToIdentity();    //1, 1, 1, 1 in the diagonal of the matrix
 
         mPmatrix = new QMatrix4x4{};
@@ -51,33 +51,25 @@ RenderWindow::RenderWindow(const QSurfaceFormat &format, MainWindow *mainWindow)
 
         mVmatrix = new QMatrix4x4{};
         mVmatrix->setToIdentity();
+
    //Make the gameloop timer;
     mRenderTimer = new QTimer(this);
 
 
     InitMoveKeys();
 
-   //mObjects.push_back(new XYZ());
-   //mObjects.push_back(new Curve());
-//   mObjects.push_back(new Cube());
-//   mObjects.push_back(new TriangleSurface{"../3Dprog22/vertices.dat"});
-//   auto trSurf = reinterpret_cast<TriangleSurface*>(mObjects[1]);
-//   trSurf->drawUnitNormals(true);
+
+
 
    mObjects.push_back(new XYZ());
    mObjects.push_back(new Curve{"../3Dprog22/Curve.txt"});
-   //mObjects.push_back(new Cube());
-   // mObjects.push_back(new TriangleSurface);
 
-  //mObjects.push_back(new Curve("/GItRepos/3Dprog22/Curve.txt"));
-    //mObjects.push_back(new TriangleSurface()); // make a new text file
-    //TriangleSurface("F:/GItRepos/3Dprog22/Triangle.txt");
-    //Directly read TXT file without contruct,,
-   //mObjects.push_back(new TriangleSurface("F:/GItRepos/3Dprog22/Trianglee.txt"));
-    //mia = new InteractiveObject();
+   mObjects.push_back(new TriangleSurface{"../3Dprog22/vertices.dat"});
+   auto trSurf = reinterpret_cast<TriangleSurface*>(mObjects[2]);
+   trSurf->drawUnitNormals(true);
 
-  //mia = new OctahedronBall(2);
-   //mObjects.push_back(mia);
+   mObjects.push_back(new Cube());
+
 }
 
 RenderWindow::~RenderWindow()
@@ -218,6 +210,22 @@ void RenderWindow::render()
     }
     if (Curve_render) {
         auto obj =  mObjects[1];
+
+        MoveByInput(obj);
+        RotateByInput(obj);
+
+        obj->draw();
+    }
+    if(Plane_render){
+        auto obj = mObjects[2];
+
+        MoveByInput(obj);
+        RotateByInput(obj);
+
+        obj->draw();
+    }
+    if(Cube_render){
+        auto obj = mObjects[3];
 
         MoveByInput(obj);
         RotateByInput(obj);
