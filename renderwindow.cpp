@@ -488,11 +488,11 @@ void RenderWindow::RotateByInput(VisualObject* obj)
             break;
 
         case Qt::Key_Q:
-            rotVec += zrot;
+            rotVec -= zrot;
             break;
 
         case Qt::Key_E:
-            rotVec -= zrot;
+            rotVec += zrot;
             break;
 
         default:
