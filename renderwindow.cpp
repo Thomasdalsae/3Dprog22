@@ -20,6 +20,7 @@
 #include "logger.h"
 #include "camera.h"
 #include "trianglesurface.h"
+#include "curve.h"
 
 
 
@@ -58,13 +59,13 @@ RenderWindow::RenderWindow(const QSurfaceFormat &format, MainWindow *mainWindow)
 
    //mObjects.push_back(new XYZ());
    //mObjects.push_back(new Curve());
-   mObjects.push_back(new Cube());
-   mObjects.push_back(new TriangleSurface{"../3Dprog22/vertices.dat"});
-   auto trSurf = reinterpret_cast<TriangleSurface*>(mObjects[1]);
-   trSurf->drawUnitNormals(true);
+//   mObjects.push_back(new Cube());
+//   mObjects.push_back(new TriangleSurface{"../3Dprog22/vertices.dat"});
+//   auto trSurf = reinterpret_cast<TriangleSurface*>(mObjects[1]);
+//   trSurf->drawUnitNormals(true);
 
    mObjects.push_back(new XYZ());
-   //mObjects.push_back(new Curve());
+   mObjects.push_back(new Curve{"../3Dprog22/Curve.txt"});
    //mObjects.push_back(new Cube());
    // mObjects.push_back(new TriangleSurface);
 
@@ -205,9 +206,23 @@ void RenderWindow::render()
 
 //the actual draw call
 
-    for (auto it=mObjects.begin();it!= mObjects.end(); it++)
-        (*it)->draw();
+//    for (auto it=mObjects.begin();it!= mObjects.end(); it++)
+//        (*it)->draw();
     //ree
+
+
+
+    switch (mState) {
+    case xyz:
+        mObjects[0]->draw();
+        break;
+    case curve:
+        mObjects[1]->draw();
+        break;
+    default:
+        break;
+    }
+
 /*
  if (XYZ_render == true){
     XYZ().draw();
