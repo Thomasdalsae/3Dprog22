@@ -1,4 +1,5 @@
 #include "trianglesurface.h"
+#include "linesegment.h"
 #include <fstream>
 #include <QTextStream>
 #include <QDir>
@@ -104,7 +105,7 @@ void TriangleSurface::draw()
 
 void TriangleSurface::move(float dx, float dy, float dz)
 {
-    InteractiveObject::move(dx, dy, dz);
+    VisualObject::move(dx, dy, dz);
     for (auto normal : mNormals) {
         normal->move(dx, dy, dz);
     }
@@ -112,7 +113,7 @@ void TriangleSurface::move(float dx, float dy, float dz)
 
 void TriangleSurface::Rotate(float deg, float x, float y, float z)
 {
-    InteractiveObject::Rotate(deg, x, y, z);
+    VisualObject::Rotate(deg, x, y, z);
 
     for (auto normal : mNormals) {
         normal->Rotate(deg, x, y, z);

@@ -1,10 +1,9 @@
 #ifndef TRIANGLESURFACE_H
 #define TRIANGLESURFACE_H
 
-#include "linesegment.h"
-#include "interactiveobject.h"
+#include "visualobject.h"
 
-class TriangleSurface : public InteractiveObject
+class TriangleSurface : public VisualObject
 {
 public:
     TriangleSurface();
@@ -20,7 +19,7 @@ public:
 
 private:
     bool bDrawUnitNormals{false};
-    std::vector<LineSegment*> mNormals{};
+    std::vector<class LineSegment*> mNormals{};
 
 public:
     void drawUnitNormals(bool on) {
