@@ -55,7 +55,7 @@ RenderWindow::RenderWindow(const QSurfaceFormat &format, MainWindow *mainWindow)
    //mObjects.push_back(new XYZ());
    //mObjects.push_back(new Curve());
    mObjects.push_back(new Cube());
-   mObjects.push_back(new TriangleSurface{"vertices.dat"});
+   mObjects.push_back(new TriangleSurface{"../3Dprog22/vertices.dat"});
    auto trSurf = reinterpret_cast<TriangleSurface*>(mObjects[1]);
    trSurf->drawUnitNormals(true);
   //mObjects.push_back(new Curve("/GItRepos/3Dprog22/Curve.txt"));

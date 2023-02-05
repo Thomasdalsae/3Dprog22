@@ -14,7 +14,7 @@ public:
     void Rotate(float l,float r, float u, float d ) override;
 
 private:
-    float mx, my ,mz ,RotationAngle , RotationX ,RotationY ,FloatZ;
+    float mx, my, mz ,RotationAngle , RotationX ,RotationY , FloatZ;
 
 };
 

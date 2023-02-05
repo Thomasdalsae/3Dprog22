@@ -57,9 +57,8 @@ void InteractiveObject::move(float dx, float dy , float dz){
     my += dy;
     mz += dz;
 
-
-
     mMatrix.translate(mx,my,mz); // need to tell it to move
+    mPosition = mMatrix*mPosition;
 
     mx = 0;
     my = 0;
@@ -75,6 +74,8 @@ void InteractiveObject::Rotate(float dl, float dr, float du, float dd)
 
 
   mMatrix.rotate(RotationAngle,RotationX,RotationY,FloatZ);
+
+  qDebug() << position();
 
   RotationAngle = 0;
   RotationX = 0;

@@ -83,8 +83,8 @@ void TriangleSurface::init(GLint matrixUniform)
 
     glBindVertexArray(0);
 
-    for (auto normal : mNormals) {
-        normal->init(matrixUniform);
+    for (size_t i = 0; i < mNormals.size(); ++i) {
+        mNormals[i]->init(matrixUniform);
     }
 }
 
@@ -97,8 +97,8 @@ void TriangleSurface::draw()
 
     if (!bDrawUnitNormals) return;
 
-    for (auto normal : mNormals) {
-        normal->draw();
+    for (size_t i = 0; i < mNormals.size(); ++i) {
+        mNormals[i]->draw();
     }
 }
 
