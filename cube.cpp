@@ -1,6 +1,6 @@
 #include "cube.h"
 
-Cube::Cube() : mx{0.0f}, my{0.0f}, mz{0.0f}, RotationAngle{0.0f}, RotationX{0.0f}, RotationY{0.0f}, FloatZ {0.0f}
+Cube::Cube()
 
 
 {
@@ -108,36 +108,5 @@ void Cube::draw(){
    glDrawArrays(GL_TRIANGLES, 0, mVertices.size());
 
 
-}
-
-void Cube::move(float dx, float dy , float dz){
-
-    mx += dx;
-    my += dy;
-    mz += dz;
-
-
-
-    mMatrix.translate(mx,my,mz); // need to tell it to move
-
-    mx = 0;
-    my = 0;
-    mz = 0;
-}
-
-void Cube::Rotate(float dl, float dr, float du, float dd)
-{
-  RotationAngle += dl;
-  RotationX += dr;
-  RotationY += du;
-  FloatZ += dd;
-
-
-  mMatrix.rotate(RotationAngle,RotationX,RotationY,FloatZ);
-
-  RotationAngle = 0;
-  RotationX = 0;
-  RotationY = 0;
-  FloatZ = 0;
 }
 
