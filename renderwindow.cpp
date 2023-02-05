@@ -23,8 +23,6 @@ RenderWindow::RenderWindow(const QSurfaceFormat &format, MainWindow *mainWindow)
     : mContext(nullptr), mInitialized(false), mMainWindow(mainWindow)
 {
 
-
-
     //This is sent to QWindow:
     setSurfaceType(QWindow::OpenGLSurface);
     setFormat(format);
@@ -50,6 +48,7 @@ RenderWindow::RenderWindow(const QSurfaceFormat &format, MainWindow *mainWindow)
         mVmatrix->setToIdentity();
    //Make the gameloop timer;
     mRenderTimer = new QTimer(this);
+    InitMoveKeys();
 
    //mObjects.push_back(new XYZ());
    //mObjects.push_back(new Curve());
@@ -61,7 +60,7 @@ RenderWindow::RenderWindow(const QSurfaceFormat &format, MainWindow *mainWindow)
     //Directly read TXT file without contruct,,
    //mObjects.push_back(new TriangleSurface("F:/GItRepos/3Dprog22/Trianglee.txt"));
     //mia = new InteractiveObject();
-   //mia = new Cube();
+   mia = mObjects[0];
 
   //mia = new OctahedronBall(2);
    //mObjects.push_back(mia);
@@ -181,13 +180,13 @@ void RenderWindow::render()
     //what shader to use
     glUseProgram(mShaderProgram->getProgram() );
 
-
-
-
     //Moveing camera
-    mVmatrix->translate(0,0,-5);
-    mCamera.lookAt(QVector3D{0,0,5},QVector3D{0,0,0}, QVector3D{0,1,0});
+    mCamera.translate(0,0,-5);
+    mCamera.lookAt(QVector3D{0,0,-5},QVector3D{0,0,0}, QVector3D{0,1,0});
     mCamera.update();
+
+    MoveByInput(mia);
+    RotateByInput(mia);
 
 //the actual draw call
     for (auto it=mObjects.begin();it!= mObjects.end(); it++)
@@ -196,24 +195,13 @@ void RenderWindow::render()
 
     mMVPmatrix->setToIdentity();
 
-   // qDebug()<<*mPmatrix;
-
-
-
-
-    //xyz.draw();
-
-
-
-
-
     //Calculate framerate before
     // checkForGLerrors() because that call takes a long time
     // and before swapBuffers(), else it will show the vsync time
-   // calculateFramerate();
+    calculateFramerate();
 
     //using our expanded OpenGL debugger to check if everything is OK.
-    //checkForGLerrors();
+    checkForGLerrors();
 
     //Qt require us to call this swapBuffers() -function.
     // swapInterval is 1 by default which means that swapBuffers() will (hopefully) block
@@ -222,12 +210,12 @@ void RenderWindow::render()
 
     //just to make the triangle rotate - tweak this:
     //                   degree, x,   y,   z -axis
-    if(mRotate){
-        //mMVPmatrix->rotate(2.f, 0.f, 1.0, 0.f);
-        //mPmatrix->rotate(2.f, 0.f, 1.0, 0.f);
-        mVmatrix->rotate(2.f, 0.f, 1.0, 0.f);
+//    if(mRotate){
+//        //mMVPmatrix->rotate(2.f, 0.f, 1.0, 0.f);
+//        //mPmatrix->rotate(2.f, 0.f, 1.0, 0.f);
+//        mVmatrix->rotate(2.f, 0.f, 1.0, 0.f);
 
-    }
+//    }
 
 }
 
@@ -348,60 +336,63 @@ void RenderWindow::startOpenGLDebugger()
 // NB - see renderwindow.h for signatures on keyRelease and mouse input
 void RenderWindow::keyPressEvent(QKeyEvent *event)
 {
+    pressedKeys[event->key()] = true;
+
+
     if (event->key() == Qt::Key_Escape)
     {
         mMainWindow->close();       //Shuts down the whole program
     }
 
 
-    if (event->key() == Qt::Key_Right)
-    {
-        mia->move(1.0f,0.0f,0.0f);
-    }
+//    if (event->key() == Qt::Key_Right)
+//    {
+//        mia->move(1.0f,0.0f,0.0f);
+//    }
 
-    if (event->key() == Qt::Key_Left)
-    {
-        mia->move(-1.0f,0.0f,0.0f);
-    }
+//    if (event->key() == Qt::Key_Left)
+//    {
+//        mia->move(-1.0f,0.0f,0.0f);
+//    }
 
-    if (event->key() == Qt::Key_Up)
-    {
-        mia->move(0.0f,1.0f,0.0f);
-    }
-  if (event->key() == Qt::Key_Down)
-    {
-        mia->move(0.0f,-1.0f,0.0f);
-    }
+//    if (event->key() == Qt::Key_Up)
+//    {
+//        mia->move(0.0f,1.0f,0.0f);
+//    }
+//  if (event->key() == Qt::Key_Down)
+//    {
+//        mia->move(0.0f,-1.0f,0.0f);
+//    }
 
 
-  if(event->key() == Qt::Key_Q)
-  {
-      mia->move(0.0f,0.0f,1.0f);
-  }
+//  if(event->key() == Qt::Key_Q)
+//  {
+//      mia->move(0.0f,0.0f,1.0f);
+//  }
 
-  if(event->key() == Qt::Key_E)
-  {
-      mia->move(0.0f,0.0f,-1.0f);
-  }
+//  if(event->key() == Qt::Key_E)
+//  {
+//      mia->move(0.0f,0.0f,-1.0f);
+//  }
 
-  if(event->key() == Qt::Key_S){
+//  if(event->key() == Qt::Key_S){
 
-  mia->Rotate(1.0f,1.0f,0.0f,0.0f);
-  }
+//  mia->Rotate(1.0f,1.0f,0.0f,0.0f);
+//  }
 
-  if(event->key() == Qt::Key_W){
+//  if(event->key() == Qt::Key_W){
 
-  mia->Rotate(1.0f,-1.0f,0.0f,0.0f);
-  }
-    if(event->key() == Qt::Key_D){
+//  mia->Rotate(1.0f,-1.0f,0.0f,0.0f);
+//  }
+//    if(event->key() == Qt::Key_D){
 
-  mia->Rotate(1.0f,0.0f,1.0f,0.0f);
-  }
+//  mia->Rotate(1.0f,0.0f,1.0f,0.0f);
+//  }
 
-  if(event->key() == Qt::Key_A){
+//  if(event->key() == Qt::Key_A){
 
-  mia->Rotate(1.0f,0.0f,-1.0f,0.0f);
-  }
+//  mia->Rotate(1.0f,0.0f,-1.0f,0.0f);
+//  }
 
     //You get the keyboard input like this
 //    if(event->key() == Qt::Key_A)
@@ -411,5 +402,123 @@ void RenderWindow::keyPressEvent(QKeyEvent *event)
 //    if(event->key() == Qt::Key_S)
 //    {
 //        mMainWindow->statusBar()->showMessage(" SSSS");
-//    }
+  //    }
+}
+
+void RenderWindow::keyReleaseEvent(QKeyEvent *event)
+{
+    pressedKeys[event->key()] = false;
+}
+
+void RenderWindow::MoveByInput(VisualObject *obj)
+{
+    QVector3D movVec{};
+
+    QVector3D right{1,0,0};
+    QVector3D up{0,1,0};
+    QVector3D out{0,0,1};
+
+    for (auto key : pressedKeys) {
+        if (key.second) continue;
+
+        switch (key.first) {
+        case Qt::Key_Right:
+            movVec += right;
+            break;
+
+        case Qt::Key_Left:
+            movVec -= right;
+            break;
+
+        case Qt::Key_Up:
+            movVec -= up;
+            break;
+
+        case Qt::Key_Down:
+            movVec += up;
+            break;
+
+        case Qt::Key_Space:
+            movVec += out;
+            break;
+
+        case Qt::Key_Shift:
+            movVec -= out;
+            break;
+
+        default:
+            break;
+        }
+    }
+
+    movVec.normalize();
+    movVec /= mRenderTimer->interval();
+    obj->move(movVec.x(), movVec.y(), movVec.z());
+}
+
+void RenderWindow::RotateByInput(VisualObject* obj)
+{
+    QVector3D rotVec{};
+    bool bRotating{false};
+
+    QVector3D xrot{1,0,0};
+    QVector3D yrot{0,1,0};
+    QVector3D zrot{0,0,1};
+
+    for (auto key : pressedKeys) {
+        if (!key.second) continue;
+
+        bRotating = true;
+
+        switch (key.first) {
+        case Qt::Key_S:
+            rotVec += xrot;
+            break;
+
+        case Qt::Key_W:
+            rotVec -= xrot;
+            break;
+
+        case Qt::Key_D:
+            rotVec += yrot;
+            break;
+
+        case Qt::Key_A:
+            rotVec -= yrot;
+            break;
+
+        case Qt::Key_Q:
+            rotVec += zrot;
+            break;
+
+        case Qt::Key_E:
+            rotVec -= zrot;
+            break;
+
+        default:
+            break;
+        }
+    }
+
+    rotVec.normalize();
+    if(bRotating) obj->Rotate(1.0f, rotVec.x(), rotVec.y(), rotVec.z());
+}
+
+void RenderWindow::InitMoveKeys()
+{
+    // cache key states for move keys:
+    pressedKeys[Qt::Key_Right] = false;
+    pressedKeys[Qt::Key_Left] = false;
+    pressedKeys[Qt::Key_Up] = false;
+    pressedKeys[Qt::Key_Down] = false;
+    pressedKeys[Qt::Key_Space] = false;
+    pressedKeys[Qt::Key_Shift] = false;
+
+    // cache key states for rot keys:
+    pressedKeys[Qt::Key_Q] = false;
+    pressedKeys[Qt::Key_E] = false;
+    pressedKeys[Qt::Key_S] = false;
+    pressedKeys[Qt::Key_W] = false;
+    pressedKeys[Qt::Key_D] = false;
+    pressedKeys[Qt::Key_A] = false;
 }

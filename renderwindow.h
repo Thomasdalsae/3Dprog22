@@ -43,6 +43,7 @@ private slots:
 private:
 
     //Vertex m_v;
+    std::map<int, bool> pressedKeys{};
     std::vector<VisualObject*> mObjects;
     VisualObject* mia;
     Camera mCamera{};
@@ -90,8 +91,12 @@ protected:
     //    void mousePressEvent(QMouseEvent *event) override{}
     //    void mouseMoveEvent(QMouseEvent *event) override{}
     void keyPressEvent(QKeyEvent *event) override;              //the only one we use now
-    //    void keyReleaseEvent(QKeyEvent *event) override{}
+    void keyReleaseEvent(QKeyEvent *event) override;
     //    void wheelEvent(QWheelEvent *event) override{}
+
+    void MoveByInput(VisualObject* );
+    void RotateByInput(VisualObject* );
+    void InitMoveKeys();
 };
 
 #endif // RENDERWINDOW_H
