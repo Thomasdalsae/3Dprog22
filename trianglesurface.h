@@ -1,25 +1,31 @@
 #ifndef TRIANGLESURFACE_H
 #define TRIANGLESURFACE_H
 
-#include <fstream>
-#include <iostream>
-#include <vertex.h>
-#include <QFile>
-#include <QTextStream>
-#include "visualobject.h"
-#include "QVector3D"
+#include "linesegment.h"
+#include "interactiveobject.h"
 
-
-class TriangleSurface : public VisualObject
+class TriangleSurface : public InteractiveObject
 {
 public:
-   TriangleSurface();
-   TriangleSurface(std::string filnavn);
-   ~TriangleSurface() override;
-   void readFile(std::string filnavn);
-   void toFile(std::string filnavn);
-   void init(GLint shader) override;
-   void draw() override;
-   void construct();
+    TriangleSurface();
+    TriangleSurface(std::string filnavn);
+    ~TriangleSurface() override;
+    void readFile(std::string filnavn);
+
+    virtual void init(GLint shader) override;
+    virtual void draw() override;
+
+    void move(float dx, float dy, float dz) override;
+    void Rotate(float deg, float x, float y, float z) override;
+
+private:
+    bool bDrawUnitNormals{false};
+    std::vector<LineSegment*> mNormals{};
+
+public:
+    void drawUnitNormals(bool on) {
+        bDrawUnitNormals = on;
+    }
 };
-#endif
+
+#endif // TRIANGLESURFACE_H
