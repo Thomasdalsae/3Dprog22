@@ -90,7 +90,7 @@ void MainWindow::on_rotationButton_toggled(bool checked)
     }
 }
 
-void MainWindow::on_XYZ_toggled(bool checked)
+void MainWindow::on_XYZButton_toggled(bool checked)
 {
  if (checked){
     mRenderWindow->XYZ_render = true;
@@ -106,7 +106,7 @@ void MainWindow::on_XYZ_toggled(bool checked)
 }
 
 
-void MainWindow::on_Curve_toggled(bool checked)
+void MainWindow::on_CurveButton_toggled(bool checked)
 {
    if(checked){
        mRenderWindow->Curve_render = true;

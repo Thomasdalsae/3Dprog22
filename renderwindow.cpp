@@ -75,7 +75,6 @@ RenderWindow::RenderWindow(const QSurfaceFormat &format, MainWindow *mainWindow)
     //Directly read TXT file without contruct,,
    //mObjects.push_back(new TriangleSurface("F:/GItRepos/3Dprog22/Trianglee.txt"));
     //mia = new InteractiveObject();
-   mia = mObjects[0];
 
   //mia = new OctahedronBall(2);
    //mObjects.push_back(mia);
@@ -200,8 +199,7 @@ void RenderWindow::render()
     mCamera.lookAt(QVector3D{0,0,15},QVector3D{0,0,0}, QVector3D{0,1,0});
     mCamera.update();
 
-    MoveByInput(mia);
-    RotateByInput(mia);
+
 
 
 //the actual draw call
@@ -210,17 +208,21 @@ void RenderWindow::render()
 //        (*it)->draw();
     //ree
 
+    if (XYZ_render) {
+        auto obj =  mObjects[0];
 
+        MoveByInput(obj);
+        RotateByInput(obj);
 
-    switch (mState) {
-    case xyz:
-        mObjects[0]->draw();
-        break;
-    case curve:
-        mObjects[1]->draw();
-        break;
-    default:
-        break;
+        obj->draw();
+    }
+    if (Curve_render) {
+        auto obj =  mObjects[1];
+
+        MoveByInput(obj);
+        RotateByInput(obj);
+
+        obj->draw();
     }
 
 /*
