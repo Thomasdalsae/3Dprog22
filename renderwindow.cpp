@@ -69,9 +69,6 @@ RenderWindow::RenderWindow(const QSurfaceFormat &format, MainWindow *mainWindow)
 
 RenderWindow::~RenderWindow()
 {
-
-
-
     mObjects.clear();
 
     //cleans up the GPU memory
