@@ -1,10 +1,10 @@
 #ifndef LINESEGMENT_H
 #define LINESEGMENT_H
 
-#include "interactiveobject.h"
+#include "visualobject.h"
 
 
-class LineSegment : public InteractiveObject
+class LineSegment : public VisualObject
 {
 public:
     LineSegment();
