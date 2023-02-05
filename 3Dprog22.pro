@@ -11,6 +11,7 @@ SOURCES += main.cpp \
     cube.cpp \
     curve.cpp \
     interactiveobject.cpp \
+    linesegment.cpp \
     logger.cpp \
     mainwindow.cpp \
     octahedronball.cpp \
@@ -27,6 +28,7 @@ HEADERS += \
     cube.h \
     curve.h \
     interactiveobject.h \
+    linesegment.h \
     logger.h \
     mainwindow.h \
     octahedronball.h \
