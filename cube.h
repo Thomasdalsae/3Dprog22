@@ -9,6 +9,7 @@ public:
     ~Cube() override;
    void init(GLint matrixuniform) override;
    void draw() override;
+
 private:
 
 };

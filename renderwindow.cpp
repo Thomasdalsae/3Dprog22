@@ -54,16 +54,17 @@ RenderWindow::RenderWindow(const QSurfaceFormat &format, MainWindow *mainWindow)
 
    //mObjects.push_back(new XYZ());
    //mObjects.push_back(new Curve());
-//   mObjects.push_back(new Cube());
-//   mObjects.push_back(new TriangleSurface{"../3Dprog22/vertices.dat"});
-//   auto trSurf = reinterpret_cast<TriangleSurface*>(mObjects[1]);
-//   trSurf->drawUnitNormals(true);
-
-   mObjects.push_back(new XYZ());
-   mObjects.push_back(new Curve());
-
+   mObjects.push_back(new Cube());
+   mObjects.push_back(new TriangleSurface{"../3Dprog22/vertices.dat"});
+   auto trSurf = reinterpret_cast<TriangleSurface*>(mObjects[1]);
+   trSurf->drawUnitNormals(true);
+  //mObjects.push_back(new Curve("/GItRepos/3Dprog22/Curve.txt"));
+    //mObjects.push_back(new TriangleSurface()); // make a new text file
+    //TriangleSurface("F:/GItRepos/3Dprog22/Triangle.txt");
+    //Directly read TXT file without contruct,,
+   //mObjects.push_back(new TriangleSurface("F:/GItRepos/3Dprog22/Trianglee.txt"));
+    //mia = new InteractiveObject();
    mia = mObjects[0];
-
 
   //mia = new OctahedronBall(2);
    //mObjects.push_back(mia);
@@ -191,19 +192,12 @@ void RenderWindow::render()
     MoveByInput(mia);
     RotateByInput(mia);
 
-   // qDebug()<<*mPmatrix;
+//the actual draw call
+    for (auto it=mObjects.begin();it!= mObjects.end(); it++)
+        (*it)->draw();
+    //ree
 
-
-
-
-    //xyz.draw();
-
-  if(mRotate){
-        //mMVPmatrix->rotate(2.f, 0.f, 1.0, 0.f);
-        //mPmatrix->rotate(2.f, 0.f, 1.0, 0.f);
-        mVmatrix->rotate(2.f, 0.f, 1.0, 0.f);
-
-    }
+    mMVPmatrix->setToIdentity();
 
     //Calculate framerate before
     // checkForGLerrors() because that call takes a long time
