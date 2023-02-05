@@ -1,6 +1,7 @@
 #pragma once
-#include "interactiveobject.h"
-class Tetrahedron : public InteractiveObject
+#include "visualobject.h"
+
+class Tetrahedron : public VisualObject
 {
 public:
 	Tetrahedron();
