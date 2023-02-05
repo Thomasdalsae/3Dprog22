@@ -10,6 +10,7 @@
 #include <string>
 #include <fstream>
 #include <iostream>
+#include <QDir>
 
 
 #include "shader.h"
@@ -50,17 +51,21 @@ RenderWindow::RenderWindow(const QSurfaceFormat &format, MainWindow *mainWindow)
     mRenderTimer = new QTimer(this);
     InitMoveKeys();
 
+    QString path = QDir().cleanPath(QDir().absoluteFilePath("../../vertices.dat"));
+
    //mObjects.push_back(new XYZ());
    //mObjects.push_back(new Curve());
    mObjects.push_back(new Cube());
-   // mObjects.push_back(new TriangleSurface);
+   mObjects.push_back(new TriangleSurface{path.toStdString()});
+   auto trSurf = reinterpret_cast<TriangleSurface*>(mObjects[1]);
+   trSurf->drawUnitNormals(true);
   //mObjects.push_back(new Curve("/GItRepos/3Dprog22/Curve.txt"));
     //mObjects.push_back(new TriangleSurface()); // make a new text file
     //TriangleSurface("F:/GItRepos/3Dprog22/Triangle.txt");
     //Directly read TXT file without contruct,,
    //mObjects.push_back(new TriangleSurface("F:/GItRepos/3Dprog22/Trianglee.txt"));
     //mia = new InteractiveObject();
-   mia = mObjects[0];
+   mia = mObjects[1];
 
   //mia = new OctahedronBall(2);
    //mObjects.push_back(mia);
@@ -167,7 +172,7 @@ void RenderWindow::render()
    // mPmatrix->perspective(60,4.0/3.0,0.1,10.0);
 
     mCamera.init(mPmatrixUniform, mVmatrixUniform);
-    mCamera.perspective(60,4.0/3.0,0.1,10.0);
+    mCamera.perspective(60,4.0/3.0,0.1,20.0);
 
     mTimeStart.restart(); //restart FPS clock
     mContext->makeCurrent(this); //must be called every frame (every time mContext->swapBuffers is called)
@@ -181,8 +186,8 @@ void RenderWindow::render()
     glUseProgram(mShaderProgram->getProgram() );
 
     //Moveing camera
-    mCamera.translate(0,0,-5);
-    mCamera.lookAt(QVector3D{0,0,-5},QVector3D{0,0,0}, QVector3D{0,1,0});
+    mCamera.translate(0,0,15);
+    mCamera.lookAt(QVector3D{0,0,15},QVector3D{0,0,0}, QVector3D{0,1,0});
     mCamera.update();
 
     MoveByInput(mia);
@@ -343,66 +348,6 @@ void RenderWindow::keyPressEvent(QKeyEvent *event)
     {
         mMainWindow->close();       //Shuts down the whole program
     }
-
-
-//    if (event->key() == Qt::Key_Right)
-//    {
-//        mia->move(1.0f,0.0f,0.0f);
-//    }
-
-//    if (event->key() == Qt::Key_Left)
-//    {
-//        mia->move(-1.0f,0.0f,0.0f);
-//    }
-
-//    if (event->key() == Qt::Key_Up)
-//    {
-//        mia->move(0.0f,1.0f,0.0f);
-//    }
-//  if (event->key() == Qt::Key_Down)
-//    {
-//        mia->move(0.0f,-1.0f,0.0f);
-//    }
-
-
-//  if(event->key() == Qt::Key_Q)
-//  {
-//      mia->move(0.0f,0.0f,1.0f);
-//  }
-
-//  if(event->key() == Qt::Key_E)
-//  {
-//      mia->move(0.0f,0.0f,-1.0f);
-//  }
-
-//  if(event->key() == Qt::Key_S){
-
-//  mia->Rotate(1.0f,1.0f,0.0f,0.0f);
-//  }
-
-//  if(event->key() == Qt::Key_W){
-
-//  mia->Rotate(1.0f,-1.0f,0.0f,0.0f);
-//  }
-//    if(event->key() == Qt::Key_D){
-
-//  mia->Rotate(1.0f,0.0f,1.0f,0.0f);
-//  }
-
-//  if(event->key() == Qt::Key_A){
-
-//  mia->Rotate(1.0f,0.0f,-1.0f,0.0f);
-//  }
-
-    //You get the keyboard input like this
-//    if(event->key() == Qt::Key_A)
-//    {
-//        mMainWindow->statusBar()->showMessage(" AAAA");
-//    }
-//    if(event->key() == Qt::Key_S)
-//    {
-//        mMainWindow->statusBar()->showMessage(" SSSS");
-  //    }
 }
 
 void RenderWindow::keyReleaseEvent(QKeyEvent *event)
@@ -414,9 +359,9 @@ void RenderWindow::MoveByInput(VisualObject *obj)
 {
     QVector3D movVec{};
 
-    QVector3D right{1,0,0};
-    QVector3D up{0,1,0};
-    QVector3D out{0,0,1};
+    QVector3D right{-1,0,0};
+    QVector3D up{0,-1,0};
+    QVector3D out{0,0,-1};
 
     for (auto key : pressedKeys) {
         if (key.second) continue;
@@ -431,11 +376,11 @@ void RenderWindow::MoveByInput(VisualObject *obj)
             break;
 
         case Qt::Key_Up:
-            movVec -= up;
+            movVec += up;
             break;
 
         case Qt::Key_Down:
-            movVec += up;
+            movVec -= up;
             break;
 
         case Qt::Key_Space:
