@@ -1,6 +1,6 @@
 #include "camera.h"
 
-Camera::Camera() : mEye{0,0,-5}
+Camera::Camera() : mEye{0,0,0}
 {
     mPmatrix.setToIdentity();
     mVmatrix.setToIdentity();
