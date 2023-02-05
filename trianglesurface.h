@@ -3,8 +3,7 @@
 
 #include "visualobject.h"
 
-class TriangleSurface : public VisualObject
-{
+class TriangleSurface : public VisualObject {
 public:
     TriangleSurface();
     TriangleSurface(std::string filnavn);

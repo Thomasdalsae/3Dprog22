@@ -10,14 +10,13 @@
 //which is based on stuff from http://learnopengl.com/ and http://open.gl/.
 
 //must inherit from QOpenGLFunctions_4_1_Core, since we use that instead of glfw/glew/glad
-class Shader : protected QOpenGLFunctions_4_1_Core
-{
+class Shader : protected QOpenGLFunctions_4_1_Core {
 public:
     // Constructor generates the shader on the fly
-    Shader(const GLchar *vertexPath, const GLchar *fragmentPath);
+    Shader(const GLchar* vertexPath, const GLchar* fragmentPath);
 
     ///Use the current shader
-    void use( );
+    void use();
 
     ///Returns the program number for this shader
     GLuint getProgram() const;
@@ -27,7 +26,7 @@ private:
     GLuint mProgram;
 
     ///The logger - Output Log in the application
-    class Logger *mLogger{nullptr};
+    class Logger* mLogger{nullptr};
 };
 
 #endif

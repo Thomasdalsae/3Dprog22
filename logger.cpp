@@ -13,36 +13,33 @@
    It is used by getting an instance of the class and calling the logText() function
 */
 
-Logger::Logger()
-{}
+Logger::Logger() {
+}
 
-Logger *Logger::getInstance()
-{
-    static Logger *mInstance = new Logger();
+Logger* Logger::getInstance() {
+    static Logger* mInstance = new Logger();
     return mInstance;
 }
 
-void Logger::setMainWindow(MainWindow *mainWindowIn)
-{
+void Logger::setMainWindow(MainWindow* mainWindowIn) {
     mMainWindow = mainWindowIn;
 }
 
-void Logger::logText(std::string input, LogType colorIn)
-{
+void Logger::logText(std::string input, LogType colorIn) {
     QColor textColor;
 
     //Setting the color of the text to be printed
     switch (colorIn) {
-    case LogType::LOG :
+    case LogType::LOG:
         textColor = Qt::white;
         break;
-    case LogType::HIGHLIGHT :
+    case LogType::HIGHLIGHT:
         textColor = Qt::darkGreen;
         break;
-    case LogType::WARNING :
+    case LogType::WARNING:
         textColor = Qt::yellow;
         break;
-    case LogType::REALERROR :
+    case LogType::REALERROR:
         textColor = Qt::red;
         break;
     default:

@@ -12,24 +12,22 @@
 */
 
 ///Colors for the Logger class
-enum class LogType
-{
+enum class LogType {
     LOG = 0,
     HIGHLIGHT,
     WARNING,
-    REALERROR       //For some reason "ERROR" is taken, even within this enum class...
+    REALERROR //For some reason "ERROR" is taken, even within this enum class...
 };
 
 ///Basic logging functionality to the widget in the MainWindow.
 /// This class is a singleton, so you get it by calling getInstance();
-class Logger
-{
+class Logger {
 public:
     ///Getting the instance of this class. This class is a singleton.
     static Logger* getInstance();
 
     ///Setting the pointer to MainWindow, so the logger knows where to print
-    void setMainWindow(class MainWindow *mainWindowIn);
+    void setMainWindow(class MainWindow* mainWindowIn);
 
     ///Printing the given string to the log window. Optional logtype (sets color) as second parameter
     void logText(std::string input, LogType colorIn = LogType::LOG);
@@ -37,8 +35,11 @@ public:
 private:
     //Protecting the constructors since this class is a singleton
     Logger();
-    void operator=(Logger&){};  //Assignment operator
-    Logger(const Logger&){};    //Copy constructor
+
+    void operator=(Logger&) {
+    }; //Assignment operator
+    Logger(const Logger&) {
+    }; //Copy constructor
 
     class MainWindow* mMainWindow{nullptr};
 };

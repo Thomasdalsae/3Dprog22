@@ -2,16 +2,14 @@
 #define CUBE_H
 #include "visualobject.h"
 
-class Cube : public VisualObject
-{
+class Cube : public VisualObject {
 public:
     Cube();
     ~Cube() override;
-   void init(GLint matrixuniform) override;
-   void draw() override;
+    void init(GLint matrixuniform) override;
+    void draw() override;
 
 private:
-
 };
 
 #endif // CUBE_H

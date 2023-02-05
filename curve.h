@@ -10,17 +10,16 @@
 #include "QVector3D"
 
 
-class Curve : public VisualObject
-{
+class Curve : public VisualObject {
 public:
-   Curve();
-   Curve(std::string filnavn);
-   ~Curve() override;
-   void readFile(std::string filnavn);
-   void toFile(std::string filnavn);
-   void init(GLint shader) override;
-   void draw() override;
-   void construct();
+    Curve();
+    Curve(std::string filnavn);
+    ~Curve() override;
+    void readFile(std::string filnavn);
+    void toFile(std::string filnavn);
+    void init(GLint shader) override;
+    void draw() override;
+    void construct();
 };
 
 #endif // CURVE_H
