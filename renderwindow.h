@@ -34,7 +34,8 @@ public:
     QOpenGLContext *context() { return mContext; }
 
     void exposeEvent(QExposeEvent *) override;  //gets called when app is shown and resized
-
+    bool XYZ_render{false};  // check if xyz should render
+    bool Curve_render{false}; // check if curve should render
     bool mRotate{true};     //Check if triangle should rotate
 
 private slots:

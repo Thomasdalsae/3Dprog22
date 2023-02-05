@@ -90,6 +90,27 @@ void MainWindow::on_rotationButton_toggled(bool checked)
     }
 }
 
+void MainWindow::on_XYZ_toggled(bool checked)
+{
+ if (checked){
+    mRenderWindow->XYZ_render = false;
+    ui->XYZButton->setText("Render XYC");
+ }
+ else
+ {
+
+ }
+
+
+}
+
+void MainWindow::on_Curve_toggled(bool checked)
+{
+
+}
+
+
+
 //File menu Exit closes the program
 void MainWindow::on_fileExit_triggered()
 {

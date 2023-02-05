@@ -16,7 +16,27 @@
   <widget class="QWidget" name="centralWidget">
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
+     <widget class="QPushButton" name="pushButton_2">
+      <property name="text">
+       <string>Curve Render</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="pushButton">
+      <property name="text">
+       <string>XYC Render</string>
+      </property>
+     </widget>
+    </item>
+    <item>
      <widget class="QPushButton" name="rotationButton">
+      <property name="minimumSize">
+       <size>
+        <width>1378</width>
+        <height>0</height>
+       </size>
+      </property>
       <property name="text">
        <string>Stop rotation</string>
       </property>
@@ -39,7 +59,7 @@
      <x>0</x>
      <y>0</y>
      <width>1396</width>
-     <height>20</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
