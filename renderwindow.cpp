@@ -51,8 +51,8 @@ RenderWindow::RenderWindow(const QSurfaceFormat &format, MainWindow *mainWindow)
    //Make the gameloop timer;
     mRenderTimer = new QTimer(this);
 
-   //mObjects.push_back(new XYZ());
-   //mObjects.push_back(new Curve());
+   mObjects.push_back(new XYZ());
+   mObjects.push_back(new Curve());
    //mObjects.push_back(new Cube());
    // mObjects.push_back(new TriangleSurface);
   //mObjects.push_back(new Curve("/GItRepos/3Dprog22/Curve.txt"));
@@ -61,10 +61,10 @@ RenderWindow::RenderWindow(const QSurfaceFormat &format, MainWindow *mainWindow)
     //Directly read TXT file without contruct,,
    //mObjects.push_back(new TriangleSurface("F:/GItRepos/3Dprog22/Trianglee.txt"));
     //mia = new InteractiveObject();
-   mia = new Cube();
+  //mia = new Cube();
 
   //mia = new OctahedronBall(2);
-   mObjects.push_back(mia);
+   //mObjects.push_back(mia);
 }
 
 RenderWindow::~RenderWindow()
@@ -192,6 +192,10 @@ void RenderWindow::render()
     mCamera.lookAt(QVector3D{0,0,5},QVector3D{0,0,0}, QVector3D{0,1,0});
     mCamera.update();
 
+
+
+
+
 //the actual draw call
     for (auto it=mObjects.begin();it!= mObjects.end(); it++)
         (*it)->draw();
@@ -206,6 +210,12 @@ void RenderWindow::render()
 
     //xyz.draw();
 
+  if(mRotate){
+        //mMVPmatrix->rotate(2.f, 0.f, 1.0, 0.f);
+        //mPmatrix->rotate(2.f, 0.f, 1.0, 0.f);
+        mVmatrix->rotate(2.f, 0.f, 1.0, 0.f);
+
+    }
 
 
 
@@ -225,12 +235,6 @@ void RenderWindow::render()
 
     //just to make the triangle rotate - tweak this:
     //                   degree, x,   y,   z -axis
-    if(mRotate){
-        //mMVPmatrix->rotate(2.f, 0.f, 1.0, 0.f);
-        //mPmatrix->rotate(2.f, 0.f, 1.0, 0.f);
-        mVmatrix->rotate(2.f, 0.f, 1.0, 0.f);
-
-    }
 
 }
 

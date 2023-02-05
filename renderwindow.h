@@ -12,8 +12,6 @@
 #include "trianglesurface.h"
 #include "curve.h"
 #include "camera.h"
-#include "cube.h"
-#include "interactiveobject.h"
 #include "octahedronball.h"
 
 class QOpenGLContext;
@@ -34,8 +32,8 @@ public:
     QOpenGLContext *context() { return mContext; }
 
     void exposeEvent(QExposeEvent *) override;  //gets called when app is shown and resized
-    bool XYZ_render{false};  // check if xyz should render
-    bool Curve_render{false}; // check if curve should render
+    bool XYZ_render{true};  // check if xyz should render
+    bool Curve_render{true}; // check if curve should render
     bool mRotate{true};     //Check if triangle should rotate
 
 private slots:

@@ -93,20 +93,30 @@ void MainWindow::on_rotationButton_toggled(bool checked)
 void MainWindow::on_XYZ_toggled(bool checked)
 {
  if (checked){
-    mRenderWindow->XYZ_render = false;
+    mRenderWindow->XYZ_render = true;
     ui->XYZButton->setText("Render XYC");
  }
  else
  {
-
+    mRenderWindow->XYZ_render = false;
+    ui->XYZButton->setText("stop rendering XYC");
  }
 
 
 }
 
+
 void MainWindow::on_Curve_toggled(bool checked)
 {
-
+   if(checked){
+       mRenderWindow->Curve_render = true;
+       ui->CurveButton->setText("Render Curve");
+   }
+   else
+   {
+       mRenderWindow->Curve_render = false;
+               ui->CurveButton->setText("Stop rendering Curve");
+   }
 }
 
 
