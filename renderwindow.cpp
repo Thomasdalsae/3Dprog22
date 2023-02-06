@@ -59,7 +59,7 @@ RenderWindow::RenderWindow(const QSurfaceFormat& format, MainWindow* mainWindow)
     mObjects.push_back(new XYZ());
     mObjects.push_back(new Curve{"../3Dprog22/Curve.txt"});
 
-    mObjects.push_back(new TriangleSurface{"../3Dprog22/vertices.dat"});
+    mObjects.push_back(new TriangleSurface{"../../vertices.dat"});
 
     mObjects.push_back(new Cube());
 }
@@ -374,12 +374,12 @@ void RenderWindow::keyReleaseEvent(QKeyEvent* event) {
 void RenderWindow::MoveByInput(VisualObject* obj) {
     QVector3D movVec{};
 
-    QVector3D right{-1, 0, 0};
-    QVector3D up{0, -1, 0};
-    QVector3D out{0, 0, -1};
+    QVector3D right{1, 0, 0};
+    QVector3D up{0, 1, 0};
+    QVector3D out{0, 0, 1};
 
     for (auto key : pressedKeys) {
-        if (key.second) continue;
+        if (!key.second) continue;
 
         switch (key.first) {
         case Qt::Key_Right:
