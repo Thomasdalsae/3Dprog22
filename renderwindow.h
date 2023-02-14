@@ -39,6 +39,7 @@ public:
     bool Plane_render{false};
     bool Cube_render{false};
     bool drawNormals{false};
+    bool Disc_render{false};
 
 private
     slots:

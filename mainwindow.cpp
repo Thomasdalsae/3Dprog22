@@ -129,6 +129,19 @@ void MainWindow::on_Cube_toggled(bool checked) {
     }
 }
 
+void MainWindow::on_DiscButton_toggled(bool checked) {
+    if (checked) {
+        mRenderWindow->Disc_render = true;
+        ui->DiscButton->setText("Stop rendering Disc");
+    }
+    else {
+        mRenderWindow->Disc_render = false;
+        ui->DiscButton->setText("Render Disc");
+    }
+}
+
+
+
 
 //File menu Exit closes the program
 void MainWindow::on_fileExit_triggered() {

@@ -11,7 +11,7 @@ VisualObject::~VisualObject() {
 
 void VisualObject::move(float dx, float dy, float dz) {
     mMatrix.translate(dx, dy, dz); // need to tell it to move
-    mPosition = mMatrix * QVector4D{0, 0, 0, 1};
+  // mPosition = mMatrix * QVector4D{0, 0, 0, 1};
 }
 
 void VisualObject::Rotate(float dl, float dr, float du, float dd) {

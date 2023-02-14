@@ -21,6 +21,7 @@
 #include "camera.h"
 #include "trianglesurface.h"
 #include "curve.h"
+#include "disc.h"
 
 
 RenderWindow::RenderWindow(const QSurfaceFormat& format, MainWindow* mainWindow)
@@ -62,6 +63,8 @@ RenderWindow::RenderWindow(const QSurfaceFormat& format, MainWindow* mainWindow)
     mObjects.push_back(new TriangleSurface{"../../vertices.dat"});
 
     mObjects.push_back(new Cube());
+
+    mObjects.push_back(new Disc());
 }
 
 RenderWindow::~RenderWindow() {
@@ -209,6 +212,15 @@ void RenderWindow::render() {
     }
     if (Cube_render) {
         auto obj = mObjects[3];
+
+        MoveByInput(obj);
+        RotateByInput(obj);
+
+        obj->draw();
+
+    }
+    if (Disc_render){
+        auto obj = mObjects[4];
 
         MoveByInput(obj);
         RotateByInput(obj);

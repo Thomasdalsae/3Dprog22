@@ -32,6 +32,8 @@ private
     void on_Triangle_toggled(bool chekced);
     void on_Cube_toggled(bool checked);
 
+    void on_DiscButton_toggled(bool checked);
+
 private:
     ///called from the constructor. Initializes different parts of the program.
     void init();

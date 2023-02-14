@@ -1,6 +1,7 @@
 #include "curve.h"
 
 Curve::Curve() : VisualObject() {
+
     mMatrix.setToIdentity();
     //readFile("C:/Users/thoma/Desktop/3Dprog22-main/3Dprog22/Triangle.txt");
 
