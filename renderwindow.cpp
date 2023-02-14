@@ -65,6 +65,7 @@ RenderWindow::RenderWindow(const QSurfaceFormat& format, MainWindow* mainWindow)
     mObjects.push_back(new Cube());
 
     mObjects.push_back(new Disc());
+
 }
 
 RenderWindow::~RenderWindow() {
@@ -186,6 +187,9 @@ void RenderWindow::render() {
     //        (*it)->draw();
     //ree
 
+
+
+
     if (XYZ_render) {
         auto obj = mObjects[0];
 
@@ -224,8 +228,10 @@ void RenderWindow::render() {
 
         MoveByInput(obj);
         RotateByInput(obj);
-
+        //Forcing rotation.
+       // obj->move(1.0f);
         obj->draw();
+
     }
 
     /*
@@ -248,15 +254,14 @@ void RenderWindow::render() {
     // and wait for vsync.
     mContext->swapBuffers(this);
 
-    //just to make the triangle rotate - tweak this:
-    //                   degree, x,   y,   z -axis
-    //    if(mRotate){
-    //        //mMVPmatrix->rotate(2.f, 0.f, 1.0, 0.f);
-    //        //mPmatrix->rotate(2.f, 0.f, 1.0, 0.f);
-    //        mVmatrix->rotate(2.f, 0.f, 1.0, 0.f);
 
-    //    }
-}
+
+    if(mRotate){
+     mObjects[4]->move(1.0f);
+    }
+
+
+ }
 
 //This function is called from Qt when window is exposed (shown)
 // and when it is resized

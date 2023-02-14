@@ -11,6 +11,7 @@
 #include "camera.h"
 
 #include "octahedronball.h"
+#include "disc.h"
 
 class QOpenGLContext;
 class Shader;
@@ -33,7 +34,7 @@ public:
 
     void exposeEvent(QExposeEvent*) override; //gets called when app is shown and resized
 
-    bool mRotate{true}; //Check if triangle should rotate
+    bool mRotate{false}; //Check if triangle should rotate
     bool XYZ_render{false};
     bool Curve_render{false};
     bool Plane_render{false};
@@ -48,6 +49,7 @@ private
 
 private:
     //Vertex m_v;
+    //Disc disc{};
     std::map<int, bool> pressedKeys{};
     std::vector<VisualObject*> mObjects;
     VisualObject* mia;

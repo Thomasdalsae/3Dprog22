@@ -7,6 +7,7 @@ Disc::Disc(): VisualObject() {
     mMatrix.setToIdentity();
 
     construct();
+
 }
 Disc::~Disc(){};
 
@@ -40,7 +41,7 @@ void Disc::init(GLint matrixUniform)
 
 
    //enable the matrixUniform
-   // mMatrixUniform = glGetUniformLocation( matrixUniform, "matrix" );
+    //mMatrixUniform = glGetUniformLocation( matrixUniform, "matrix" );
    glGenBuffers(1, &mIBO);
    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mIBO);
    glBufferData(GL_ELEMENT_ARRAY_BUFFER, mIndices.size()*sizeof(GLuint), mIndices.data(), GL_STATIC_DRAW);
@@ -56,7 +57,7 @@ void Disc::draw()
 {
    initializeOpenGLFunctions();
    glBindVertexArray( mVAO );
-   // GL_FALSE for QMatrix4x4
+   // GL_FALSE  for QMatrix4x4
    glUniformMatrix4fv( mMatrixUniform, 1, GL_FALSE, mMatrix.constData());
    //glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mIBO);
    glDrawElements(GL_TRIANGLE_FAN, mVertices.size(), GL_UNSIGNED_INT, reinterpret_cast<const void*>(0));//mVertices.size());
@@ -87,11 +88,14 @@ void Disc::construct()
 ///*
 void Disc::move(float dt)
 {
+
+    qDebug() << "Entering Disc";
    float degrees = (180 * dt) / M_PI;
    mRotation.rotate(degrees, 0, 0, 1);
    mMatrix = mRotation;
 }
 //*/
+
 /*
 // sklir
 void Disc::move(float dt)
@@ -118,6 +122,7 @@ void Disc::move(float dt)
   // husk å starte med mRotation som identitetsmatrise
 
 
+    qDebug() << "Entering Disc MOVE";
   mMatrix = mPosition*mRotation;		// hvis mPosition og mRotation er Matrix4x4
 }
 */
