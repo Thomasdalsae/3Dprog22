@@ -257,7 +257,8 @@ void RenderWindow::render() {
 
 
     if(mRotate){
-     mObjects[4]->move(1.0f);
+        mObjects[4]->move(5.0f);
+     //mObjects[4]->move(0.1f,0.0f,0.0f);
     }
 
 
