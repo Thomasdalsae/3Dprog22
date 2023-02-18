@@ -101,14 +101,27 @@ void Disc::move(float dt)
 {
 
     qDebug() << "Entering Disc Move";
-    float tanSpeed = dt * mRadius;
-    QVector4D tanVel{-1, 0, 0, 1};
-    tanVel = mRotation.inverted() * tanVel;
-    tanVel *= tanSpeed;
+  QVector3D ds=mVelocity*dt;
 
-    VisualObject::move(tanVel.x(), tanVel.y(), tanVel.z());
 
-    float degrees = (180.0f * dt) / M_PI;
-    mRotation.rotate(degrees, 0, 0, 1);
-    mMatrix.rotate(degrees, 0, 0, 1);
+  // mPosition = mPosition + ds;		// hvis mPosisjon er Vector3d
+  mPosition.translate(ds.x(), ds.y(), ds.z());	// hvis mPosisjon er Matrix4x4
+
+
+  // normalen kan generelt være en parameter inn
+  QVector3D normal = QVector3D{0.0f, 1.0f, 0.0f};
+
+
+  // bruker kryssprodukt for å finne rotasjonsvektor
+  QVector3D rotation = QVector3D::crossProduct(normal, mVelocity);
+  rotation.normalize();
+
+
+  // bruk formelen ds = r dt ==> dt = ds/r
+  // for å finne ut hvor mye hjulet har rotert
+  // og oppdater rotasjonsmatrisen
+  // husk å starte med mRotation som identitetsmatrise
+
+
+  mMatrix = mPosition*mRotation;		// hvis mPosition og mRotation er Matrix4x4
 }
