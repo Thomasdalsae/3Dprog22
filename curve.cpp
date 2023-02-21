@@ -103,9 +103,10 @@ void Curve::construct() {
     toFile("/GItRepos/3Dprog22/Curve.txt");
 }
 */
+/*
 void Curve::construct() {
 
-        int n = 10;
+        int n = 250;
     float xmin = -2.0f, xmax = 10.0f, h = (xmax - xmin) / n;
 
     std::vector<float> Y = {8,3,1,5,5,8,3,5};
@@ -124,9 +125,32 @@ void Curve::construct() {
 
     toFile("/GItRepos/3Dprog22/CurveOblig2.txt");
 }
-
-/*
-
 */
+void Curve::construct() {
+
+
+
+
+        int n = 250;
+    float xmin = -3.0f, xmax = 6.0f, h = (xmax - xmin) / n;
+
+    std::vector<float> Y = {8,3,1,5};
+    //for (auto x=xmin;x<xmax;x+=h)
+
+    for (float i = xmin; i < xmax; i += h) {
+        float x = (i);
+        float y = ((0.5*x*x*x)-(1.5*x*x)-4*x+13);
+        mVertices.push_back(Vertex{x, y, 0, 1, 0, 0});
+
+
+        std::cout << "x: " << x ;
+        std::cout << " y: " << y  << std::endl;
+    }
+
+
+    toFile("/GItRepos/3Dprog22/CurveOblig2.txt");
+}
+
+
 // toFile("C:/Users/thoma/Desktop/3Dprog22-main/3Dprog22/Curve.txt");
 //}

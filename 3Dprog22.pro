@@ -11,6 +11,7 @@ SOURCES += main.cpp \
     cube.cpp \
     curve.cpp \
     disc.cpp \
+    graphpoints.cpp \
     linesegment.cpp \
     logger.cpp \
     mainwindow.cpp \
@@ -28,6 +29,7 @@ HEADERS += \
     cube.h \
     curve.h \
     disc.h \
+    graphpoints.h \
     linesegment.h \
     logger.h \
     mainwindow.h \
