@@ -28,6 +28,7 @@ private
 
     void on_XYZButton_toggled(bool checked);
     void on_CurveButton_toggled(bool checked);
+    void on_GraphPointsButton_toggled(bool checked);
 
     void on_Triangle_toggled(bool chekced);
     void on_Cube_toggled(bool checked);

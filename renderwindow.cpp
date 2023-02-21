@@ -15,6 +15,7 @@
 
 #include "XYZ_H.h"
 #include "cube.h"
+#include "graphpoints.h"
 #include "shader.h"
 #include "mainwindow.h"
 #include "logger.h"
@@ -68,6 +69,7 @@ RenderWindow::RenderWindow(const QSurfaceFormat& format, MainWindow* mainWindow)
 
     mObjects.push_back(new Disc());
 
+    mObjects.push_back(new GraphPoints);
 }
 
 RenderWindow::~RenderWindow() {
@@ -233,8 +235,13 @@ void RenderWindow::render() {
         //Forcing rotation.
        // obj->move(1.0f);
         obj->draw();
-
     }
+    if (GrapPoints_render){
+        auto obj = mObjects[5];
+
+        obj->draw();
+    }
+
 
     /*
      if (XYZ_render == true){

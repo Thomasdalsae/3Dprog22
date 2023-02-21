@@ -10,6 +10,12 @@
     <height>1006</height>
    </rect>
   </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
   <property name="windowTitle">
    <string>OpenGL in Qt is great fun!</string>
   </property>
@@ -17,16 +23,55 @@
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
      <widget class="QPushButton" name="CurveButton">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="tabletTracking">
+       <bool>false</bool>
+      </property>
+      <property name="focusPolicy">
+       <enum>Qt::StrongFocus</enum>
+      </property>
+      <property name="acceptDrops">
+       <bool>false</bool>
+      </property>
       <property name="text">
        <string>Curve Render</string>
       </property>
       <property name="checkable">
        <bool>true</bool>
       </property>
+      <property name="autoRepeat">
+       <bool>false</bool>
+      </property>
+      <property name="autoDefault">
+       <bool>false</bool>
+      </property>
+      <property name="default">
+       <bool>false</bool>
+      </property>
+      <property name="flat">
+       <bool>false</bool>
+      </property>
      </widget>
     </item>
     <item>
      <widget class="QPushButton" name="XYZButton">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
       <property name="text">
        <string>XYC Render</string>
       </property>
@@ -40,6 +85,12 @@
     </item>
     <item>
      <widget class="QPushButton" name="Triangle">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
       <property name="toolTipDuration">
        <number>-1</number>
       </property>
@@ -53,6 +104,12 @@
     </item>
     <item>
      <widget class="QPushButton" name="Cube">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
       <property name="text">
        <string>Render Cube</string>
       </property>
@@ -63,6 +120,12 @@
     </item>
     <item>
      <widget class="QPushButton" name="DiscButton">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
       <property name="text">
        <string>Disc Render</string>
       </property>
@@ -72,26 +135,31 @@
      </widget>
     </item>
     <item>
-     <widget class="QPushButton" name="rotationButton">
-      <property name="minimumSize">
-       <size>
-        <width>1378</width>
-        <height>0</height>
-       </size>
+     <widget class="QCheckBox" name="GraphPointsCheckBox">
+      <property name="enabled">
+       <bool>true</bool>
       </property>
       <property name="text">
-       <string>Stop rotation</string>
+       <string>GraphPoints</string>
       </property>
       <property name="checkable">
        <bool>true</bool>
       </property>
-      <property name="checked">
-       <bool>false</bool>
+     </widget>
+    </item>
+    <item>
+     <widget class="QCheckBox" name="rotationCheckBox">
+      <property name="text">
+       <string>Rotation</string>
       </property>
      </widget>
     </item>
     <item>
-     <layout class="QVBoxLayout" name="OpenGLLayout"/>
+     <layout class="QVBoxLayout" name="OpenGLLayout">
+      <property name="leftMargin">
+       <number>0</number>
+      </property>
+     </layout>
     </item>
    </layout>
   </widget>

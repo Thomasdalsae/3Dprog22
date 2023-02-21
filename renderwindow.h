@@ -12,6 +12,7 @@
 
 #include "octahedronball.h"
 #include "disc.h"
+#include "graphpoints.h"
 
 class QOpenGLContext;
 class Shader;
@@ -41,6 +42,7 @@ public:
     bool Cube_render{false};
     bool drawNormals{false};
     bool Disc_render{false};
+    bool GrapPoints_render{false};
 
 private
     slots:

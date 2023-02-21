@@ -76,11 +76,11 @@ void MainWindow::init() {
 void MainWindow::on_rotationButton_toggled(bool checked) {
     if (checked) {
         mRenderWindow->mRotate = true;
-        ui->rotationButton->setText("Stop rotation");
+        ui->rotationCheckBox->setText("Stop rotation");
     }
     else {
         mRenderWindow->mRotate = false;
-        ui->rotationButton->setText("Start rotation");
+        ui->rotationCheckBox->setText("Start rotation");
     }
 }
 
@@ -105,6 +105,18 @@ void MainWindow::on_CurveButton_toggled(bool checked) {
         mRenderWindow->Curve_render = false;
         ui->CurveButton->setText("Render Curve");
     }
+}
+
+void MainWindow::on_GraphPointsButton_toggled(bool checked)
+{
+   if   (checked){
+       mRenderWindow->GrapPoints_render = true;
+       ui->GraphPointsCheckBox->setText("Stop rendering GraphPoints");
+   }
+   else {
+       mRenderWindow->GrapPoints_render = false;
+       ui->GraphPointsCheckBox->setText("Render GraphPoints");
+   }
 }
 
 void MainWindow::on_Triangle_toggled(bool checked) {
