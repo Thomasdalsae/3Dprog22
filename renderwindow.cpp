@@ -58,7 +58,9 @@ RenderWindow::RenderWindow(const QSurfaceFormat& format, MainWindow* mainWindow)
 
 
     mObjects.push_back(new XYZ());
-    mObjects.push_back(new Curve{"../3Dprog22/Curve.txt"});
+
+    mObjects.push_back(new Curve);
+    //mObjects.push_back(new Curve{"../3Dprog22/Curve.txt"});
 
     mObjects.push_back(new TriangleSurface{"../../vertices.dat"});
 
