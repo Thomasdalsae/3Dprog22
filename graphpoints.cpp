@@ -82,46 +82,28 @@ void GraphPoints::draw() {
     glDrawArrays(GL_POINTS, 0, mVertices.size());
 }
 
-/*
-void Curve::construct() {
-    int n = 250;
-    float xmin = -1.0f, xmax = 1.0f, h = (xmax - xmin) / n;
 
 
-    //for (auto x=xmin;x<xmax;x+=h)
+void GraphPoints::construct() {
 
-    for (float i = xmin; i < xmax; i += h) {
-        float x = (i);
-        float y = sin(12 * x);
-        mVertices.push_back(Vertex{x, y, 0, 1, 0, 0});
-    }
 
-    toFile("/GItRepos/3Dprog22/Curve.txt");
+    mVertices.push_back(Vertex{1,8,0,1,0,0});
+    mVertices.push_back(Vertex{2,3,0,1,0,0});
+    mVertices.push_back(Vertex{4,1,0,1,0,0});
+    mVertices.push_back(Vertex{4,5,0,1,0,0});
+    mVertices.push_back(Vertex{4,5,0,1,0,0});
+    mVertices.push_back(Vertex{5,5,0,1,0,0});
+    mVertices.push_back(Vertex{7,8,0,1,0,0});
+    mVertices.push_back(Vertex{7,3,0,1,0,0});
+    mVertices.push_back(Vertex{8,5,0,1,0,0});
+    qDebug("Entering GraphPOints");
+
+    toFile("/GItRepos/3Dprog22/PointsOblig2.txt");
 }
-*/
+
+
+
 /*
-void Curve::construct() {
-
-        int n = 250;
-    float xmin = -2.0f, xmax = 10.0f, h = (xmax - xmin) / n;
-
-    std::vector<float> Y = {8,3,1,5,5,8,3,5};
-    //for (auto x=xmin;x<xmax;x+=h)
-
-    for (float i = xmin; i < xmax; i += h) {
-        float x = (i);
-        float y = ((0.231678*x*x)-(2.12057*x)+8.3357);
-        mVertices.push_back(Vertex{x, y, 0, 1, 0, 0});
-
-
-        std::cout << "x: " << x ;
-        std::cout << " y: " << y  << std::endl;
-    }
-
-
-    toFile("/GItRepos/3Dprog22/CurveOblig2.txt");
-}
-*/
 void GraphPoints::construct() {
 
 
@@ -130,10 +112,11 @@ void GraphPoints::construct() {
     mVertices.push_back(Vertex{3,1,0,1,0,0});
     mVertices.push_back(Vertex{4,5,0,1,0,0});
 
+    qDebug("Entering GraphPOints");
 
     toFile("/GItRepos/3Dprog22/PointsOblig2.txt");
 }
-
+*/
 
 // toFile("C:/Users/thoma/Desktop/3Dprog22-main/3Dprog22/Curve.txt");
 //}

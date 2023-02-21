@@ -22,13 +22,13 @@ private
     slots:
     ///Slot called from the button in the mainwindow.ui file
     
-    void on_rotationButton_toggled(bool checked);
+    void on_rotationCheckBox_toggled(bool checked);
     ///Slot called from the File->Exit menu in the mainwindow.ui file
     void on_fileExit_triggered();
 
     void on_XYZButton_toggled(bool checked);
     void on_CurveButton_toggled(bool checked);
-    void on_GraphPointsButton_toggled(bool checked);
+    void on_GraphPointsCheckBox_toggled(bool checked);
 
     void on_Triangle_toggled(bool chekced);
     void on_Cube_toggled(bool checked);

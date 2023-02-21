@@ -23,7 +23,7 @@
 #include "trianglesurface.h"
 #include "curve.h"
 #include "disc.h"
-
+#include "graphpoints.h"
 
 RenderWindow::RenderWindow(const QSurfaceFormat& format, MainWindow* mainWindow)
     : mContext(nullptr), mInitialized(false), mMainWindow(mainWindow) {
@@ -85,6 +85,9 @@ RenderWindow::~RenderWindow() {
 
 // Sets up the general OpenGL stuff and the buffers needed to render a triangle
 void RenderWindow::init() {
+
+
+
     //Get the instance of the utility Output logger
     //Have to do this, else program will crash (or you have to put in nullptr tests...)
     mLogger = Logger::getInstance();
@@ -153,9 +156,13 @@ for (auto it=mObjects.begin();it!= mObjects.end(); it++)
 for (auto it=mObjects.begin();it!= mObjects.end(); it++)
     (*it)->init(mVmatrixUniform);
 */
+
+glPointSize(5);
     for (auto it = mObjects.begin(); it != mObjects.end(); it++)
         (*it)->init(mMmatrixUniform);
     glBindVertexArray(0); //unbinds any VertexArray - good practice
+
+
 }
 
 // Called each frame - doing the rendering!!!
@@ -239,6 +246,8 @@ void RenderWindow::render() {
     if (GrapPoints_render){
         auto obj = mObjects[5];
 
+        MoveByInput(obj);
+        RotateByInput(obj);
         obj->draw();
     }
 

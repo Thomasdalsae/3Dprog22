@@ -103,7 +103,7 @@ void Curve::construct() {
     toFile("/GItRepos/3Dprog22/Curve.txt");
 }
 */
-/*
+///*
 void Curve::construct() {
 
         int n = 250;
@@ -125,7 +125,8 @@ void Curve::construct() {
 
     toFile("/GItRepos/3Dprog22/CurveOblig2.txt");
 }
-*/
+//*/
+/*
 void Curve::construct() {
 
 
@@ -154,3 +155,5 @@ void Curve::construct() {
 
 // toFile("C:/Users/thoma/Desktop/3Dprog22-main/3Dprog22/Curve.txt");
 //}
+*/
+

@@ -73,7 +73,7 @@ void MainWindow::init() {
 }
 
 //Example of a slot called from the button on the top of the program.
-void MainWindow::on_rotationButton_toggled(bool checked) {
+void MainWindow::on_rotationCheckBox_toggled(bool checked) {
     if (checked) {
         mRenderWindow->mRotate = true;
         ui->rotationCheckBox->setText("Stop rotation");
@@ -107,15 +107,19 @@ void MainWindow::on_CurveButton_toggled(bool checked) {
     }
 }
 
-void MainWindow::on_GraphPointsButton_toggled(bool checked)
+void MainWindow::on_GraphPointsCheckBox_toggled(bool checked)
 {
    if   (checked){
        mRenderWindow->GrapPoints_render = true;
        ui->GraphPointsCheckBox->setText("Stop rendering GraphPoints");
+
+    qDebug("Enabled GraphPOints");
    }
    else {
        mRenderWindow->GrapPoints_render = false;
        ui->GraphPointsCheckBox->setText("Render GraphPoints");
+
+    qDebug("Disabled GraphPOints");
    }
 }
 
