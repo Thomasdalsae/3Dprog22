@@ -106,11 +106,12 @@ void Curve::construct() {
 ///*
 void Curve::construct() {
 
-        int n = 250;
+        int n = 20;
     float xmin = -2.0f, xmax = 10.0f, h = (xmax - xmin) / n;
 
     std::vector<float> Y = {8,3,1,5,5,8,3,5};
     //for (auto x=xmin;x<xmax;x+=h)
+
 
     for (float i = xmin; i < xmax; i += h) {
         float x = (i);
@@ -129,10 +130,7 @@ void Curve::construct() {
 /*
 void Curve::construct() {
 
-
-
-
-        int n = 250;
+        int n = 20;
     float xmin = -3.0f, xmax = 6.0f, h = (xmax - xmin) / n;
 
     std::vector<float> Y = {8,3,1,5};
@@ -147,8 +145,6 @@ void Curve::construct() {
         std::cout << "x: " << x ;
         std::cout << " y: " << y  << std::endl;
     }
-
-
     toFile("/GItRepos/3Dprog22/CurveOblig2.txt");
 }
 

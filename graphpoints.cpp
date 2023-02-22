@@ -83,7 +83,7 @@ void GraphPoints::draw() {
 }
 
 
-
+/*
 void GraphPoints::construct() {
 
 
@@ -100,10 +100,10 @@ void GraphPoints::construct() {
 
     toFile("/GItRepos/3Dprog22/PointsOblig2.txt");
 }
+*/
 
 
 
-/*
 void GraphPoints::construct() {
 
 
@@ -116,7 +116,7 @@ void GraphPoints::construct() {
 
     toFile("/GItRepos/3Dprog22/PointsOblig2.txt");
 }
-*/
+
 
 // toFile("C:/Users/thoma/Desktop/3Dprog22-main/3Dprog22/Curve.txt");
 //}
