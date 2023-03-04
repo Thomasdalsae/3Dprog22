@@ -18,48 +18,66 @@ Cube::Cube() {
    mVertices.push_back(Vertex{0.5,0.5,0.0,0,1,0});
    mVertices.push_back(Vertex{0.0,0.5,0.0,1,0,0});
    */
-    mVertices.push_back(Vertex{-1.0, -1.0, -1.0, 1, 0, 0});
-    mVertices.push_back(Vertex{-1.0, -1.0, 1.0, 0, 1, 0});
-    mVertices.push_back(Vertex{-1.0, 1.0, 1.0, 0, 0, 1});
-    mVertices.push_back(Vertex{1.0, 1.0, -1.0, 0, 0, 1});
-    mVertices.push_back(Vertex{-1.0, -1.0, -1.0, 0, 1, 0});
-    mVertices.push_back(Vertex{-1.0, 1.0, -1.0, 1, 0, 0});
+    ;
 
-
-    mVertices.push_back(Vertex{1.0, -1.0, 1.0, 1, 0, 0});
-    mVertices.push_back(Vertex{-1.0, -1.0, -1.0, 0, 1, 0});
-    mVertices.push_back(Vertex{1.0, -1.0, -1.0, 0, 0, 1});
+    //Furthest Back of building in Z
     mVertices.push_back(Vertex{1.0, 1.0, -1.0, 0, 0, 1});
     mVertices.push_back(Vertex{1.0, -1.0, -1.0, 0, 1, 0});
     mVertices.push_back(Vertex{-1.0, -1.0, -1.0, 1, 0, 0});
+     mVertices.push_back(Vertex{1.0, 1.0, -1.0, 0, 0, 1});
+     mVertices.push_back(Vertex{-1.0, -1.0, -1.0, 0, 1, 0});
+     mVertices.push_back(Vertex{-1.0, 1.0, -1.0, 1, 0, 0});
 
+    //Left wall of the building
+    mVertices.push_back(Vertex{-1.0, -1.0, -1.0, 1, 0, 0});
+    mVertices.push_back(Vertex{-1.0, -1.0, 1.0, 0, 1, 0});
+    mVertices.push_back(Vertex{-1.0, 1.0, 1.0, 0, 0, 1});
     mVertices.push_back(Vertex{-1.0, -1.0, -1.0, 1, 0, 0});
     mVertices.push_back(Vertex{-1.0, 1.0, 1.0, 0, 1, 0});
     mVertices.push_back(Vertex{-1.0, 1.0, -1.0, 0, 0, 1});
-    mVertices.push_back(Vertex{1.0, -1.0, 1.0, 0, 0, 1});
-    mVertices.push_back(Vertex{-1.0, -1.0, 1.0, 0, 1, 0});
-    mVertices.push_back(Vertex{-1.0, -1.0, -1.0, 1, 0, 0});
+    //Floor if needed
+    //mVertices.push_back(Vertex{1.0, -1.0, 1.0, 1, 0, 0});
+    // mVertices.push_back(Vertex{-1.0, -1.0, -1.0, 0, 1, 0});
+    // mVertices.push_back(Vertex{1.0, -1.0, -1.0, 0, 0, 1});
+    // mVertices.push_back(Vertex{1.0, -1.0, 1.0, 0, 0, 1});
+    // mVertices.push_back(Vertex{-1.0, -1.0, 1.0, 0, 1, 0});
+    // mVertices.push_back(Vertex{-1.0, -1.0, -1.0, 1, 0, 0});
 
-    mVertices.push_back(Vertex{-1.0, 1.0, 1.0, 1, 0, 0});
-    mVertices.push_back(Vertex{-1.0, -1.0, 1.0, 0, 1, 0});
-    mVertices.push_back(Vertex{1.0, -1.0, 1.0, 0, 0, 1});
+    //Right side of the house
     mVertices.push_back(Vertex{1.0, 1.0, 1.0, 0, 0, 1});
     mVertices.push_back(Vertex{1.0, -1.0, -1.0, 0, 1, 0});
     mVertices.push_back(Vertex{1.0, 1.0, -1.0, 1, 0, 0});
-
     mVertices.push_back(Vertex{1.0, -1.0, -1.0, 1, 0, 0});
     mVertices.push_back(Vertex{1.0, 1.0, 1.0, 0, 1, 0});
     mVertices.push_back(Vertex{1.0, -1.0, 1.0, 0, 0, 1});
+
+        // Roof/top plane
     mVertices.push_back(Vertex{1.0, 1.0, 1.0, 0, 0, 1});
     mVertices.push_back(Vertex{1.0, 1.0, -1.0, 0, 1, 0});
     mVertices.push_back(Vertex{-1.0, 1.0, -1.0, 1, 0, 0});
-
     mVertices.push_back(Vertex{1.0, 1.0, 1.0, 1, 0, 0});
     mVertices.push_back(Vertex{-1.0, 1.0, -1.0, 0, 1, 0});
     mVertices.push_back(Vertex{-1.0, 1.0, 1.0, 0, 0, 1});
-    mVertices.push_back(Vertex{1.0, 1.0, 1.0, 0, 0, 1});
-    mVertices.push_back(Vertex{-1.0, 1.0, 1.0, 0, 1, 0});
-    mVertices.push_back(Vertex{1.0, -1.0, 1.0, 1, 0, 0});
+
+    //Left of door, front
+    mVertices.push_back(Vertex{-1.0, 1.0, 1.0, 1, 0, 0});
+    mVertices.push_back(Vertex{-1.0, -1.0, 1.0, 0, 1, 0});
+    mVertices.push_back(Vertex{-0.2, -1.0, 1.0, 0, 0, 1});
+
+    mVertices.push_back(Vertex{-1.0, 1.0, 1.0, 1, 0, 0});
+    mVertices.push_back(Vertex{-0.2, 1.0, 1.0, 0, 1, 0});
+    mVertices.push_back(Vertex{-0.2, -1.0, 1.0, 0, 0, 1});
+
+
+
+   mVertices.push_back(Vertex{1.0, 1.0, 1.0, 0, 0, 1});
+   mVertices.push_back(Vertex{1.0, -1.0, 1.0, 0, 1, 0});
+   mVertices.push_back(Vertex{0.5, -1.0, 1.0, 1, 0, 0});
+
+   mVertices.push_back(Vertex{1.0, 1.0, 1.0, 0, 0, 1});
+   mVertices.push_back(Vertex{0.5, 1.0, 1.0, 0, 1, 0});
+   mVertices.push_back(Vertex{0.5, -1.0, 1.0, 1, 0, 0});
+
 }
 
 Cube::~Cube() {

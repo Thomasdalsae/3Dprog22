@@ -120,3 +120,6 @@ void TriangleSurface::Rotate(float deg, float x, float y, float z) {
         normal->Rotate(deg, x, y, z);
     }
 }
+
+
+
