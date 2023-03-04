@@ -63,7 +63,9 @@ RenderWindow::RenderWindow(const QSurfaceFormat& format, MainWindow* mainWindow)
     mObjects.push_back(new Curve);
     //mObjects.push_back(new Curve{"../3Dprog22/Curve.txt"});
 
-    mObjects.push_back(new TriangleSurface{"../../vertices.dat"});
+    //mObjects.push_back(new TriangleSurface{"../../vertices.dat"});
+
+    mObjects.push_back(new TriangleSurface{"F:/GItRepos/3Dprog22/Trianglee.txt"});
 
     mObjects.push_back(new Cube());
 
@@ -173,7 +175,7 @@ void RenderWindow::render() {
     // mPmatrix->perspective(60,4.0/3.0,0.1,10.0);
 
     mCamera.init(mPmatrixUniform, mVmatrixUniform);
-    mCamera.perspective(60, 4.0 / 3.0, 0.1, 20.0);
+    mCamera.perspective(10, 4.0 / 3.0, 0.1, 20.0);
 
     mTimeStart.restart();        //restart FPS clock
     mContext->makeCurrent(this); //must be called every frame (every time mContext->swapBuffers is called)
